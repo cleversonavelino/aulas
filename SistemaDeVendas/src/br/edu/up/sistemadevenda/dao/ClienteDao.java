@@ -15,7 +15,7 @@ public class ClienteDao implements InterfaceDao<Cliente> {
 		EntityManager em = Conexao.
 				getInstance().createEntityManager();
 
-		//JPA 1.0
+		//JPA 1.1
 		//EntityManager em =new EntityManagerV1();
 		//JPA 2.0
 		//EntityManager em =new EntityManagerV2();
