@@ -1,6 +1,6 @@
 package br.edu.up.sistemadevenda.business;
 
-import br.edu.up.sistemadevenda.dao.ClienteDao;
+import br.edu.up.sistemadevenda.dao.FactoryDao;
 import br.edu.up.sistemadevenda.dao.InterfaceDao;
 import br.edu.up.sistemadevenda.entity.Cliente;
 
@@ -12,7 +12,7 @@ public class ClienteBusiness {
 			throw new BusinessException("RN01 - Idade deve ser maior que 18");
 		}
 		
-		InterfaceDao<Cliente> clienteDao = new ClienteDao();
+		InterfaceDao<Cliente> clienteDao = FactoryDao.createClienteDao();
 		clienteDao.salvar(c);
 	
 	}

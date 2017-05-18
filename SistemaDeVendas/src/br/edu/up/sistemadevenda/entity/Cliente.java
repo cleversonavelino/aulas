@@ -1,21 +1,28 @@
 package br.edu.up.sistemadevenda.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CLIENTE")
+@Table(name = "CLIENTE")
 public class Cliente {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
 	private Integer idade;
 	private String genero;
+	
+	@OneToMany(mappedBy="cliente",fetch=FetchType.LAZY)
+	private List<Pedido> pedidos;
 
 	public Integer getId() {
 		return id;
@@ -47,6 +54,14 @@ public class Cliente {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 }

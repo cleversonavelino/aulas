@@ -10,8 +10,6 @@ import br.edu.up.sistemadevenda.business.BusinessException;
 import br.edu.up.sistemadevenda.business.ClienteBusiness;
 import br.edu.up.sistemadevenda.dao.ClienteDao;
 import br.edu.up.sistemadevenda.entity.Cliente;
-import br.edu.up.sistemadevenda.service.ClienteService;
-import br.edu.up.sistemadevenda.service.ServiceException;
 
 
 public class TestManterCliente {
@@ -28,23 +26,9 @@ public class TestManterCliente {
 		
 		try {
 			new ClienteBusiness().salvar(c);
-		} catch (BusinessException e) {
-			
+		} catch (BusinessException e) {			
 			e.printStackTrace();
-		}
-		
-		c = new Cliente();
-		c.setId(null);
-		c.setNome("Nome do Cliente");
-		c.setIdade(35);
-		c.setGenero("Masculino");
-		
-		try {
-			new ClienteService().salvar(c);
-		} catch (ServiceException e) {
-			
-			e.printStackTrace();
-		}
+		}	
 		
 		Assert.assertEquals(true,c.getId() != null);		
 		

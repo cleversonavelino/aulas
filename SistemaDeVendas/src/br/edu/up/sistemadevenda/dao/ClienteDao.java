@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import br.edu.up.sistemadevenda.entity.Cliente;
 
+
 public class ClienteDao implements InterfaceDao<Cliente> {
 	
 	static List<Cliente> clientes = new ArrayList<Cliente>();
@@ -14,12 +15,6 @@ public class ClienteDao implements InterfaceDao<Cliente> {
 	public void salvar(Cliente c) {
 		EntityManager em = Conexao.
 				getInstance().createEntityManager();
-
-		//JPA 1.1
-		//EntityManager em =new EntityManagerV1();
-		//JPA 2.0
-		//EntityManager em =new EntityManagerV2();
-		
 		
 		em.getTransaction().begin();
 		
