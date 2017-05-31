@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.edu.up.sistemadevenda.entity.Cliente;
 
@@ -28,6 +29,9 @@ public class ClienteDao implements InterfaceDao<Cliente> {
 	}
 	
 	public List<Cliente> listar() {
-		return clientes;
+		EntityManager em = Conexao.
+				getInstance().createEntityManager();
+		Query q = em.createQuery("from Cliente");
+		return q.getResultList();
 	}
 }
