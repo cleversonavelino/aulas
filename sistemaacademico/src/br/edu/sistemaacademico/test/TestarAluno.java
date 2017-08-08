@@ -28,7 +28,7 @@ public class TestarAluno {
 		Assert.assertEquals(true,a.getId() != null);			
 	}
 	
-	@Test
+	/*@Test
 	public void listarAluno() {		
 		List<Aluno> alunos = new AlunoDao().listar();
 		
@@ -37,6 +37,6 @@ public class TestarAluno {
 		
 		
 		
-	}
+	}*/
 
 }

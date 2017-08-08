@@ -1,24 +1,39 @@
 package br.edu.sistemaacademico.dao;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import br.edu.sistemaacademico.entity.Aluno;
 
 public class AlunoDao implements InterfaceDao<Aluno> {
 	
-	static List<Aluno> alunos = new ArrayList<Aluno>();
-	static Long counter = new Long(0);
+	EntityManagerFactory emf = Persistence.
+			createEntityManagerFactory("sistemaacademico");
 	
 	public void salvar(Aluno a) {
-		a.setId(counter);
-		alunos.add(a);
-		counter++;
+		EntityManager em = emf.createEntityManager();
 		
+		em.getTransaction().begin();
+		em.persist(a);
+		em.getTransaction().commit();
+		
+		
+		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Aluno> listar() {
+		EntityManager em = emf.createEntityManager();
+		
+		Query q = em.createQuery("from Aluno");
+				
+		List<Aluno> alunos = q.getResultList();
+		em.close();
+		
 		return alunos;
 	}
-
 }
