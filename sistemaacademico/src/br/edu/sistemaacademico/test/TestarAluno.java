@@ -7,8 +7,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import br.edu.sistemaacademico.business.BusinessAluno;
+import br.edu.sistemaacademico.business.BusinessException;
 import br.edu.sistemaacademico.dao.AlunoDao;
-import br.edu.sistemaacademico.dao.InterfaceDao;
 import br.edu.sistemaacademico.entity.Aluno;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -22,13 +23,18 @@ public class TestarAluno {
 		a.setNome("Cleverson");
 		a.setMatricula("31402");
 		
-		InterfaceDao<Aluno> alunoDao = new AlunoDao();
-		alunoDao.salvar(a);
+		BusinessAluno businessAluno = new BusinessAluno();
+		
+		try {
+			businessAluno.salvar(a);
+		} catch (BusinessException e) {			
+			e.printStackTrace();
+		}
 		
 		Assert.assertEquals(true,a.getId() != null);			
 	}
 	
-	/*@Test
+	@Test
 	public void listarAluno() {		
 		List<Aluno> alunos = new AlunoDao().listar();
 		
@@ -37,6 +43,6 @@ public class TestarAluno {
 		
 		
 		
-	}*/
+	}
 
 }
