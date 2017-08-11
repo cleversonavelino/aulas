@@ -3,8 +3,6 @@ package br.edu.sistemaacademico.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import br.edu.sistemaacademico.entity.Aluno;
@@ -26,7 +24,8 @@ public class AlunoDao implements InterfaceDao<Aluno> {
 
 	@SuppressWarnings("unchecked")
 	public List<Aluno> listar() {
-		EntityManager em = Conexao.getInstance().createEntityManager();
+		EntityManager em = Conexao.getInstance().
+				createEntityManager();
 		
 		Query q = em.createQuery("from Aluno");
 				

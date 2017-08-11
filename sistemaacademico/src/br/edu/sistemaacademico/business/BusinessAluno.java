@@ -1,6 +1,6 @@
 package br.edu.sistemaacademico.business;
 
-import br.edu.sistemaacademico.dao.AlunoDao;
+import br.edu.sistemaacademico.dao.FactoryDao;
 import br.edu.sistemaacademico.dao.InterfaceDao;
 import br.edu.sistemaacademico.entity.Aluno;
 
@@ -16,7 +16,8 @@ public class BusinessAluno {
 			
 		}
 		
-		InterfaceDao<Aluno> alunoDao = new AlunoDao();
+		InterfaceDao<Aluno> alunoDao = 
+				FactoryDao.createAlunoDao();
 		alunoDao.salvar(a);
 		
 	}
