@@ -7,5 +7,6 @@ public class FactoryDao {
 	public static InterfaceDao<Aluno> createAlunoDao() {
 		return new AlunoDao();
 	}
-
+	
+	
 }
