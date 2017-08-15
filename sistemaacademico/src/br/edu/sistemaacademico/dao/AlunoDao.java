@@ -12,10 +12,15 @@ public class AlunoDao implements InterfaceDao<Aluno> {
 	
 	
 	public void salvar(Aluno a) {
-		EntityManager em = Conexao.getInstance().createEntityManager();
+		EntityManager em = Conexao.getInstance().
+				createEntityManager();
 		
 		em.getTransaction().begin();
-		em.persist(a);
+		if (a.getId() == null) {
+			em.persist(a);
+		} else {
+			em.merge(a);
+		}
 		em.getTransaction().commit();
 		
 		

@@ -5,7 +5,7 @@ import java.util.List;
 import br.edu.facear.aulafacear.entity.Cliente;
 
 public class ClienteDao implements 
-	InterfaceDao<Cliente> {
+	InterfaceDao<Cliente>, InterfaceLoginDao {
 	
 	public void excluir(Cliente c) {		
 	}
@@ -18,6 +18,12 @@ public class ClienteDao implements
 	
 	public List<Cliente> listar() {
 		return null;
+	}
+
+	@Override
+	public void login(String login, String senha) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

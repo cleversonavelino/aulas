@@ -2,33 +2,32 @@ package br.edu.facear.aulafacear.dao;
 
 import java.util.List;
 
-import br.edu.facear.aulafacear.entity.Produto;
-
 public class ProdutoDao implements 
-	InterfaceDao<Produto> {
+	InterfaceDao<Object> {
 
 	@Override
-	public void excluir(Produto t) {
+	public void excluir(Object t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void salvar(Produto t) {
+	public void salvar(Object t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void alterar(Produto t) {
+	public void alterar(Object t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<Produto> listar() {
+	public List<Object> listar() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 }
