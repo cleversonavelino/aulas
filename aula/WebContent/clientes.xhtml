@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/examples/starter-template/ -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="template.xhtml">
+	
+		<ui:define name="title">
+		Clientes
+		</ui:define>
+	
+		<ui:define name="container">		
+		<h:form>
+		
+		<ui:repeat var="cliente" value="#{mBeanCliente.clientes}">
+		
+		<div class="col-md-4" style="height: 200px; border: groove;">
+		<img src="" />
+		Nome: <h:outputText value="#{cliente.nome}"></h:outputText>
+		<br/>
+		Idade: <h:outputText value="#{cliente.idade}"></h:outputText>
+		
+		<br/>
+		
+		<h:commandLink 
+		action="#{mBeanCliente.carregarCliente(cliente)}"
+		value="Carregar"
+		styleClass="btn btn-success">
+		</h:commandLink>	
+		</div>		
+		
+		</ui:repeat>		
+		</h:form>
+		
+		</ui:define>
+	
+	</ui:composition>
+
+		
+
+</html>
+
