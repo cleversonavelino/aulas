@@ -7,14 +7,14 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="template.xhtml">
-	
-		<ui:define name="title">
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">
 		Cadastro de Clientes
 		</ui:define>
-	
-		<ui:define name="container">
-		
+
+	<ui:define name="container">
+
 		<!-- ESTE É O LUGAR PARA COLOCAR O FORMULÁRIO -->
 
 		<div class="alert alert-success" id="alerta" style="display: none;"
@@ -25,14 +25,12 @@
 		</div>
 		<h1>Cadastro de Cliente</h1>
 
-		<form jsf:id="form" 
-		class="form-horizontal" method="POST"
-		enctype="multipart/form-data">
-			
-			<input type="hidden" 
-				jsf:id="id"
-				jsf:value="#{mBeanCliente.id}"/>
-			
+		<form jsf:id="form" class="form-horizontal" method="POST"
+			enctype="multipart/form-data">
+
+			<h:messages></h:messages>
+			<input type="hidden" jsf:id="id" jsf:value="#{mBeanCliente.id}" />
+
 			<div class="form-group">
 				<label for="nome" class="col-sm-2 control-label">Nome</label>
 				<div class="col-sm-10">
@@ -52,10 +50,8 @@
 				<div class="col-sm-10">
 					<h:selectOneMenu id="genero" class="form-control"
 						value="#{mBeanCliente.genero}">
-						<f:selectItem itemLabel="Masculino"
-							itemValue="Masculino"></f:selectItem>
-						<f:selectItem itemLabel="Feminino"
-							itemValue="Feminino"></f:selectItem>
+						<f:selectItem itemLabel="Masculino" itemValue="Masculino"></f:selectItem>
+						<f:selectItem itemLabel="Feminino" itemValue="Feminino"></f:selectItem>
 					</h:selectOneMenu>
 				</div>
 			</div>
@@ -63,76 +59,88 @@
 				<label for="dtNascimento" class="col-sm-2 control-label">Data
 					de Nascimento</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="dtNascimento"
-						name="dtNascimento" placeholder="Data de Nascimento" />
+					<input type="text" class="form-control" jsf:id="dataDeNascimento"
+						jsf:value="#{mBeanCliente.dataDeNascimento}"
+						placeholder="Data de Nascimento">
+					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					</input>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="credito" class="col-sm-2 control-label">Limite
 					de Crédito</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="credito" name="credito"
-						placeholder="Limite de Crédito" />
+					<input type="text" class="form-control" jsf:id="limiteDeCredito"
+						jsf:value="#{mBeanCliente.limiteDeCredito}"
+						placeholder="Limite de Crédito">
+					<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+					</input>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="imagem" class="col-sm-2 control-label">Foto</label>
 				<div class="col-sm-10">
-					<input type="file" class="form-control" 
-						jsf:id="foto" name="foto"
-						placeholder="Foto"
-						jsf:value="#{mBeanCliente.foto}" />
+					<input type="file" class="form-control" jsf:id="foto" name="foto"
+						placeholder="Foto" jsf:value="#{mBeanCliente.foto}" />
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input jsf:id="salvar" 
-					type="submit" class="btn btn-default"
-						value="Salvar" 
-						jsf:action="#{mBeanCliente.salvar}" />
+					<input jsf:id="salvar" type="submit" class="btn btn-default"
+						value="Salvar" jsf:action="#{mBeanCliente.salvar}" />
 				</div>
 			</div>
-		
 
-		<h:dataTable var="cliente" value="#{mBeanCliente.clientes}"
-			styleClass="table table-striped">
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{cliente.nome}"></h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Idade</f:facet>
-				<h:outputText value="#{cliente.idade}"></h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Gênero</f:facet>
-				<h:outputText value="#{cliente.genero}"></h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Data de Nascimento</f:facet>
-			</h:column>
-			<h:column>
-				<input jsf:id="alterar" 
-					type="submit" class="btn btn-warning"
-						value="Alterar" 
-						jsf:action="#{mBeanCliente.carregar(cliente)}" />
-			</h:column>
-			<h:column>
-				<input jsf:id="excluir" 
-					type="submit" class="btn btn-danger"
-						value="Excluir" 
-						jsf:action="#{mBeanCliente.excluir(cliente)}" />
-			</h:column>
-		</h:dataTable>
 
-		</form>	
-		
-		
-		</ui:define>
+			<h:dataTable var="cliente" value="#{mBeanCliente.clientes}"
+				styleClass="table table-striped">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{cliente.nome}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Idade</f:facet>
+					<h:outputText value="#{cliente.idade}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Gênero</f:facet>
+					<h:outputText value="#{cliente.genero}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data de Nascimento</f:facet>
+				</h:column>
+				<h:column>
+					<input jsf:id="alterar" type="submit" class="btn btn-warning"
+						value="Alterar" jsf:action="#{mBeanCliente.carregar(cliente)}" />
+				</h:column>
+				<h:column>
+					<input jsf:id="excluir" type="submit" class="btn btn-danger"
+						value="Excluir" jsf:action="#{mBeanCliente.excluir(cliente)}" />
+				</h:column>
+			</h:dataTable>
+
+		</form>
+
+
+	</ui:define>
 	
-	</ui:composition>
+	<ui:define name="script">
+	
+	<script>
+	
+	 $("[id='form:limiteDeCredito']").
+	 	mask('#.##0,00', {reverse: true});
+	
+	</script>
+	
+	</ui:define>
 
-		
+	
+
+</ui:composition>
+
+
+
 
 </html>
 

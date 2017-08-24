@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -19,6 +20,8 @@ public class MBeanCliente {
 	private String nome;
 	private Integer idade;
 	private String genero;
+	private Date dataDeNascimento;
+	private Double limiteDeCredito;
 
 	private static List<Cliente> clientes = new ArrayList<Cliente>();
 	static long count = 1;
@@ -31,24 +34,18 @@ public class MBeanCliente {
 
 		String caminhoImagem = "";
 		if (foto != null) {
-			byte [] bytes = new byte[(int) 
-			              foto.getSize()];
+			byte[] bytes = new byte[(int) foto.getSize()];
 			foto.getInputStream().read(bytes);
-			
-			File f = new File("c:\\temp\\"  
-					+ foto.getSubmittedFileName());
-			
-			FileOutputStream fo = 
-				new FileOutputStream(f);
+
+			File f = new File("c:\\temp\\" + foto.getSubmittedFileName());
+
+			FileOutputStream fo = new FileOutputStream(f);
 			fo.write(bytes);
-			fo.close();	
-			
-			caminhoImagem = 
-					"c:\\temp\\" + 
-			foto.getSubmittedFileName();
-		}		
-		
-		
+			fo.close();
+
+			caminhoImagem = "c:\\temp\\" + foto.getSubmittedFileName();
+		}
+
 		if (id == null || id.equals(0l)) {
 			Cliente c = new Cliente();
 			c.setId(count++);
@@ -84,7 +81,7 @@ public class MBeanCliente {
 		this.genero = cliente.getGenero();
 		return "";
 	}
-	
+
 	public String carregarCliente(Cliente cliente) {
 		this.id = cliente.getId();
 		this.nome = cliente.getNome();
@@ -139,6 +136,22 @@ public class MBeanCliente {
 
 	public void setFoto(ApplicationPart foto) {
 		this.foto = foto;
+	}
+
+	public Date getDataDeNascimento() {
+		return dataDeNascimento;
+	}
+
+	public void setDataDeNascimento(Date dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
+
+	public Double getLimiteDeCredito() {
+		return limiteDeCredito;
+	}
+
+	public void setLimiteDeCredito(Double limiteDeCredito) {
+		this.limiteDeCredito = limiteDeCredito;
 	}
 
 }
