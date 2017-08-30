@@ -8,6 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.apache.catalina.core.ApplicationPart;
 
@@ -23,10 +27,9 @@ public class MBeanCliente {
 	private Date dataDeNascimento;
 	private Double limiteDeCredito;
 
-	private static List<Cliente> clientes = new ArrayList<Cliente>();
-	static long count = 1;
+	private List<Cliente> clientes = new ArrayList<Cliente>();
 
-	private ApplicationPart foto;
+	private ApplicationPart foto;	
 
 	public String salvar() throws IOException {
 		System.out.println("Nome:" + nome);
@@ -45,25 +48,22 @@ public class MBeanCliente {
 
 			caminhoImagem = "c:\\temp\\" + foto.getSubmittedFileName();
 		}
+		
+		EntityManagerFactory emf = Persistence.
+				createEntityManagerFactory("aula");
 
-		if (id == null || id.equals(0l)) {
-			Cliente c = new Cliente();
-			c.setId(count++);
-			c.setNome(nome);
-			c.setIdade(idade);
-			c.setGenero(genero);
-			c.setCaminhoImagem(caminhoImagem);
-
-			clientes.add(c);
-		} else {
-			for (Cliente c : clientes) {
-				if (c.getId().equals(this.id)) {
-					c.setNome(nome);
-					c.setIdade(idade);
-					c.setGenero(genero);
-				}
-			}
-		}
+		Cliente c = new Cliente();
+		c.setNome(nome);
+		c.setIdade(idade);
+		c.setGenero(genero);
+		
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(c);
+		em.getTransaction().commit();
+		
+		Query q = em.createQuery("from Cliente");
+		clientes = q.getResultList();
 
 		return "";
 	}
@@ -119,7 +119,7 @@ public class MBeanCliente {
 	}
 
 	public void setClientes(List<Cliente> clientes) {
-		MBeanCliente.clientes = clientes;
+		this.clientes = clientes;
 	}
 
 	public String getGenero() {
