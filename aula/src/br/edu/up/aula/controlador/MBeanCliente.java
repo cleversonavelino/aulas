@@ -49,13 +49,13 @@ public class MBeanCliente {
 			caminhoImagem = "c:\\temp\\" + foto.getSubmittedFileName();
 		}
 		
-		EntityManagerFactory emf = Persistence.
-				createEntityManagerFactory("aula");
-
 		Cliente c = new Cliente();
 		c.setNome(nome);
 		c.setIdade(idade);
 		c.setGenero(genero);
+		
+		EntityManagerFactory emf = Persistence.
+				createEntityManagerFactory("aula");
 		
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
@@ -69,7 +69,13 @@ public class MBeanCliente {
 	}
 
 	public String excluir(Cliente cliente) {
-		clientes.remove(cliente);
+		EntityManagerFactory emf = Persistence.
+				createEntityManagerFactory("aula");
+		
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.remove(cliente);
+		em.getTransaction().commit();
 
 		return "";
 	}

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Cliente {
@@ -14,8 +15,9 @@ public class Cliente {
 	private String nome;
 	private Integer idade;
 	private String genero;
+	
 	private String caminhoImagem;
-
+	
 	public Long getId() {
 		return id;
 	}
