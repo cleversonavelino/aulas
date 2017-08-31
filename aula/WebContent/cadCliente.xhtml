@@ -90,6 +90,8 @@
 						value="Salvar" jsf:action="#{mBeanCliente.salvar}" />
 				</div>
 			</div>
+			<h:graphicImage value="ImagemClienteServlet?id=#{mBeanCliente.id}"
+			width="30%" height="30%"></h:graphicImage>
 
 
 			<h:dataTable var="cliente" value="#{mBeanCliente.clientes}"
