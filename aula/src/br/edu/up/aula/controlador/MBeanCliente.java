@@ -7,14 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import org.apache.catalina.core.ApplicationPart;
 
+import br.edu.up.aula.dao.ClienteDao;
 import br.edu.up.aula.entidade.Cliente;
 
 @ManagedBean(name = "mBeanCliente")
@@ -29,7 +27,13 @@ public class MBeanCliente {
 
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 
-	private ApplicationPart foto;	
+	private ApplicationPart foto;
+	
+	@PostConstruct
+	public void carregarClientes() {
+		ClienteDao clienteDao = new ClienteDao();
+		clientes = clienteDao.listar();
+	}
 
 	public String salvar() throws IOException {
 		System.out.println("Nome:" + nome);
@@ -53,29 +57,27 @@ public class MBeanCliente {
 		c.setNome(nome);
 		c.setIdade(idade);
 		c.setGenero(genero);
+		c.setCaminhoImagem(caminhoImagem);
 		
-		EntityManagerFactory emf = Persistence.
-				createEntityManagerFactory("aula");
+		ClienteDao clienteDao = new ClienteDao();
 		
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(c);
-		em.getTransaction().commit();
+		if (id == null && id.equals(new Long(0))) {
+			clienteDao.inserir(c);
+		} else {
+			c.setId(id);
+			clienteDao.atualizar(c);
+		}
 		
-		Query q = em.createQuery("from Cliente");
-		clientes = q.getResultList();
+		clientes = clienteDao.listar();
 
 		return "";
 	}
 
 	public String excluir(Cliente cliente) {
-		EntityManagerFactory emf = Persistence.
-				createEntityManagerFactory("aula");
+		ClienteDao clienteDao = new ClienteDao();
+		clienteDao.remover(cliente);
 		
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.remove(cliente);
-		em.getTransaction().commit();
+		clientes = clienteDao.listar();
 
 		return "";
 	}

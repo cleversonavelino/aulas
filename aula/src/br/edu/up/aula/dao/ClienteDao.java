@@ -28,6 +28,7 @@ public class ClienteDao {
 	public void remover(Cliente cliente) {
 		EntityManager em = Conexao.getInstance();
 		em.getTransaction().begin();
+		cliente = em.merge(cliente);
 		em.remove(cliente);
 		em.getTransaction().commit();
 		em.close();
