@@ -13,7 +13,9 @@ import javax.faces.bean.ManagedBean;
 import org.apache.catalina.core.ApplicationPart;
 
 import br.edu.up.aula.dao.ClienteDao;
+import br.edu.up.aula.dao.EstadoDao;
 import br.edu.up.aula.entidade.Cliente;
+import br.edu.up.aula.entidade.Estado;
 
 @ManagedBean(name = "mBeanCliente")
 public class MBeanCliente {
@@ -24,15 +26,18 @@ public class MBeanCliente {
 	private String genero;
 	private Date dataDeNascimento;
 	private Double limiteDeCredito;
+	private Long idEstado;
 
 	private List<Cliente> clientes = new ArrayList<Cliente>();
+	private List<Estado> estados = new ArrayList<Estado>();
 
 	private ApplicationPart foto;
-	
+
 	@PostConstruct
 	public void carregarClientes() {
 		ClienteDao clienteDao = new ClienteDao();
 		clientes = clienteDao.listar();
+		estados = new EstadoDao().listar();
 	}
 
 	public String salvar() throws IOException {
@@ -52,22 +57,26 @@ public class MBeanCliente {
 
 			caminhoImagem = "c:\\temp\\" + foto.getSubmittedFileName();
 		}
+
+		EstadoDao estadoDao = new EstadoDao();
+		Estado estado = estadoDao.buscar(idEstado);
 		
 		Cliente c = new Cliente();
 		c.setNome(nome);
 		c.setIdade(idade);
 		c.setGenero(genero);
 		c.setCaminhoImagem(caminhoImagem);
-		
+		c.setEstado(estado);
+
 		ClienteDao clienteDao = new ClienteDao();
-		
+
 		if (id == null && id.equals(new Long(0))) {
 			clienteDao.inserir(c);
 		} else {
 			c.setId(id);
 			clienteDao.atualizar(c);
 		}
-		
+
 		clientes = clienteDao.listar();
 
 		return "";
@@ -76,7 +85,7 @@ public class MBeanCliente {
 	public String excluir(Cliente cliente) {
 		ClienteDao clienteDao = new ClienteDao();
 		clienteDao.remover(cliente);
-		
+
 		clientes = clienteDao.listar();
 
 		return "";
@@ -161,5 +170,23 @@ public class MBeanCliente {
 	public void setLimiteDeCredito(Double limiteDeCredito) {
 		this.limiteDeCredito = limiteDeCredito;
 	}
+
+	public List<Estado> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(List<Estado> estados) {
+		this.estados = estados;
+	}
+
+	public Long getIdEstado() {
+		return idEstado;
+	}
+
+	public void setIdEstado(Long idEstado) {
+		this.idEstado = idEstado;
+	}
+	
+	
 
 }

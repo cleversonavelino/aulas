@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import br.edu.facear.aulafacear.entity.Cliente;
 
-@Deprecated
 public class ClienteDao implements InterfaceDao<Cliente> {
 
 	EntityManagerFactory emf = Conexao.getInstance();

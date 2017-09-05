@@ -6,7 +6,7 @@ public class FactoryDao {
 
 	public static InterfaceDao<Cliente> 
 			createClienteDao() {
-		return new ClienteDao2();
+		return new ClienteDao();
 	}
 	
 }

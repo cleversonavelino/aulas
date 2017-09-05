@@ -4,20 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cliente {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
 	private Integer idade;
 	private String genero;
-	
+
 	private String caminhoImagem;
+
+	@ManyToOne
+	//@JoinColumn(name="FK_CLIENTE_ESTADO")
+	private Estado estado;
 	
+	@ManyToOne
+	private NewsLetter newsLetter;
+
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +63,14 @@ public class Cliente {
 
 	public void setCaminhoImagem(String caminhoImagem) {
 		this.caminhoImagem = caminhoImagem;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 }
