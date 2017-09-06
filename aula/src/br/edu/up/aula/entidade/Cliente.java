@@ -19,9 +19,9 @@ public class Cliente {
 	private String caminhoImagem;
 
 	@ManyToOne
-	//@JoinColumn(name="FK_CLIENTE_ESTADO")
+	// @JoinColumn(name="FK_CLIENTE_ESTADO")
 	private Estado estado;
-	
+
 	@ManyToOne
 	private NewsLetter newsLetter;
 
@@ -71,6 +71,14 @@ public class Cliente {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public NewsLetter getNewsLetter() {
+		return newsLetter;
+	}
+
+	public void setNewsLetter(NewsLetter newsLetter) {
+		this.newsLetter = newsLetter;
 	}
 
 }

@@ -22,7 +22,13 @@
 		Genero: <h:outputText value="#{mBeanCliente.genero}"></h:outputText>
 		</h:panelGrid>
 		
+		<h:graphicImage 
+			value="ImagemClienteServlet?id=#{mBeanCliente.id}"
+			width="60%" height="60%"></h:graphicImage>
+		
 		<h:form>
+		
+			<h:inputHidden value="#{mBeanCliente.id}"></h:inputHidden>
 		
 			<h:commandLink 
 				action="#{mBeanCarrinho.adicionar(mBeanCliente.id)}"

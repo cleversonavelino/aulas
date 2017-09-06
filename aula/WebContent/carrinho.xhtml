@@ -14,22 +14,31 @@
 		</ui:define>
 	
 		<ui:define name="container">		
-		Tela do carrinho
 		
-		<h:dataTable var="itemCarrinho" 
+		
+		<h:dataTable var="cliente" 
 			value="#{mBeanCarrinho.itens}"
 			styleClass="table table-striped">
 			<h:column>
 				<f:facet name="header">ID Cliente</f:facet>
-				<h:outputText value="#{itemCarrinho.idCliente}"></h:outputText>
+				<h:outputText value="#{cliente.id}"></h:outputText>
 			</h:column>
 			<h:column>
-				<f:facet name="header">Quantidade</f:facet>
-				<h:outputText value="#{itemCarrinho.quantidade}">
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{cliente.nome}">
 				</h:outputText>
 			</h:column>
 			
 		</h:dataTable>
+		
+		<button onclick="location.href='clientes.jsf'">
+		Adicionar um novo cliente</button>
+		
+		<h:form>
+		
+		<h:commandButton value="Salvar NewsLetter" action="#{mBeanCarrinho.salvar}"></h:commandButton>
+		
+		</h:form>
 		
 		</ui:define>
 	
