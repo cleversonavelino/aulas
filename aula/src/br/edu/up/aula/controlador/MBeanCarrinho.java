@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import br.edu.up.aula.dao.ClienteDao;
 import br.edu.up.aula.dao.NewsLetterDao;
@@ -26,6 +28,11 @@ public class MBeanCarrinho {
 	}
 	
 	public String salvar() {
+		HttpServletRequest r = (HttpServletRequest) FacesContext.
+				getCurrentInstance().getExternalContext().getRequest();
+		
+		r.getLocalAddr();
+		
 		NewsLetter n = new NewsLetter();
 		for (Cliente c : itens) {
 			c.setNewsLetter(n);
