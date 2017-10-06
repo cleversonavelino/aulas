@@ -24,7 +24,7 @@ public class MBeanCarrinho {
 		
 		itens.add(cliente);
 
-		return "carrinho.jsf";
+		return "secure/carrinho.jsf";
 	}
 	
 	public String salvar() {

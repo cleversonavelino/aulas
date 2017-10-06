@@ -7,7 +7,7 @@ import javax.persistence.Query;
 
 import br.edu.up.aula.entidade.Cliente;
 
-public class ClienteDao {
+public class ClienteDao implements InterfaceDao<Cliente> {
 	
 	public void inserir(Cliente cliente) {
 		EntityManager em = Conexao.getInstance();

@@ -7,7 +7,7 @@ import javax.persistence.Query;
 
 import br.edu.up.aula.entidade.Estado;
 
-public class EstadoDao {
+public class EstadoDao implements InterfaceDao<Estado> {
 	
 	public void inserir(Estado estado) {
 		EntityManager em = Conexao.getInstance();

@@ -14,6 +14,7 @@ import org.apache.catalina.core.ApplicationPart;
 
 import br.edu.up.aula.dao.ClienteDao;
 import br.edu.up.aula.dao.EstadoDao;
+import br.edu.up.aula.dao.InterfaceDao;
 import br.edu.up.aula.entidade.Cliente;
 import br.edu.up.aula.entidade.Estado;
 
@@ -58,8 +59,10 @@ public class MBeanCliente {
 			caminhoImagem = "c:\\temp\\" + foto.getSubmittedFileName();
 		}
 
-		EstadoDao estadoDao = new EstadoDao();
+		InterfaceDao<Estado> estadoDao = 											new EstadoDao();
 		Estado estado = estadoDao.buscar(idEstado);
+		
+		estadoDao.listar();
 		
 		Cliente c = new Cliente();
 		c.setNome(nome);

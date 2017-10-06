@@ -9,21 +9,18 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<properties>
-			<property name="hibernate.dialect" 
-				value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url" 
-			value="jdbc:h2:tcp://localhost/~/test" />
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
-			
-			<property name="hibernate.default_schema" value="public"/>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<property name="hibernate.default_schema" value="public" />
 		</properties>
 	</persistence-unit>
 </persistence>
