@@ -3,18 +3,14 @@ package br.edu.up.as.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import br.edu.up.as.entidade.Cliente;
 
-public class ClienteDao implements Dao<Cliente> {
-	
-	EntityManagerFactory emf = Persistence.
-			createEntityManagerFactory("as");
+public class ClienteDao implements Dao<Cliente> {	
 
 	public void salvar(Cliente c) {
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = Conexao.getInstance();
 		
 		em.getTransaction().begin();
 		em.persist(c);
@@ -31,7 +27,9 @@ public class ClienteDao implements Dao<Cliente> {
 	}
 	
 	public List<Cliente> listar() {
-		return null;
+		EntityManager em = Conexao.getInstance();
+		Query q = em.createQuery("from Cliente");
+		return q.getResultList();
 	}
 	
 	public Cliente buscarPorId(Integer id) {
