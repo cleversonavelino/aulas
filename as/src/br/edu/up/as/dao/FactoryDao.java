@@ -5,7 +5,7 @@ import br.edu.up.as.entidade.Cliente;
 public class FactoryDao {
 	
 	public static Dao<Cliente> createClienteDao() {
-		return new ClienteDaoHibernate6();
+		return new ClienteDao();
 	}
 
 }
