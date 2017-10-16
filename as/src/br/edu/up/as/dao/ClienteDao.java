@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import br.edu.up.as.entidade.Cliente;
 
+@Deprecated
 public class ClienteDao implements Dao<Cliente> {	
 
 	public void salvar(Cliente c) {

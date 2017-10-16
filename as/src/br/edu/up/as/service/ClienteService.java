@@ -1,7 +1,8 @@
 package br.edu.up.as.service;
 
 
-import br.edu.up.as.dao.ClienteDao;
+import br.edu.up.as.dao.Dao;
+import br.edu.up.as.dao.FactoryDao;
 import br.edu.up.as.entidade.Cliente;
 
 public class ClienteService {
@@ -14,7 +15,16 @@ public class ClienteService {
 			ServiceException("ERR01 - O nome precisa ser preenchido.");
 		}
 		
-		new ClienteDao().salvar(c);		
+		Dao<Cliente> clienteDao = FactoryDao.createClienteDao();
+		clienteDao.salvar(c);
+	}
+	
+	public void alterar(Cliente c) throws ServiceException {
+		
+		Dao<Cliente> clienteDao = FactoryDao.createClienteDao();
+		clienteDao.alterar(c);
+		
+		
 	}
 
 }
