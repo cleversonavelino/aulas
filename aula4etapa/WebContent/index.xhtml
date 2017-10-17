@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<title>Jogos</title>
+
+<style>
+
+
+</style>
+
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+	
+	
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Sistema de Jogos</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" href="index.html">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">Cadastros </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Jogos</a> <a
+							class="dropdown-item" href="#">Jogadores</a> <a
+							class="dropdown-item" href="#">Personagens</a>
+					</div></li>
+			</ul>
+		</div>
+	</nav>
+
+	<h1>Cadastro de Jogos</h1>
+	<h:form>
+	Nome: <h:inputText id="nome" value="#{mBeanJogo.nome}"></h:inputText><br/>
+	Descrição: <h:inputTextarea id="descricao" 
+		value="#{mBeanJogo.descricao}"></h:inputTextarea>
+		<br/>
+	<h:commandButton action="#{mBeanJogo.salvar}"
+	value="Salvar"></h:commandButton>
+	</h:form>
+	
+	<h:dataTable var="jogo" value="#{mBeanJogo.jogos}">
+	
+		<h:column>
+			<f:facet name="header">Nome do Jogo</f:facet>
+			#{jogo.nome}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Descrição</f:facet>
+			#{jogo.descricao}
+		</h:column>
+	
+	</h:dataTable>
+	
+	
+</body>
+</html>

@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>Meu Segundo HTML</title>
+
+<style>
+
+/* input {
+			border: 1px solid #000000;
+			background-color: gray;
+		}
+		
+		.estiloTextArea {
+			border: 1px solid #000000;
+			background-color: gray;
+		} */
+</style>
+
+<!-- IMPORTAÇÃO DO CSS DO BOOTSTRAP -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+	<!-- <a href="exemplo.html">Página 1</a>
+	<a href="formulario.html">Página 2</a>
+ -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Sistema de Jogos</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">Cadastros </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Jogos</a> <a
+							class="dropdown-item" href="#">Jogadores</a> <a
+							class="dropdown-item" href="#">Personagens</a>
+					</div></li>
+			</ul>
+		</div>
+	</nav>
+
+	<h1>Cadastro de Jogo</h1>
+	<form action="formulario.html" method="post">
+
+
+		<div class="form-group">
+			<label for="codigoJogo">Código do Jogo: </label>
+			 <input type="text"
+				name="codigoJogo" class="form-control"
+				placeholder="Digite o código do jogo" />
+		</div> 	
+
+		<div class="form-group">
+			<label>Nome do Jogo: </label> 
+			<input type="text" name="nomeJogo"
+				class="form-control" placeholder="Digite o nome do jogo" />
+		</div>
+		
+		<div class="form-group">
+			<label>Data: </label> <input type="date" id="data" 
+				name="data"
+				class="form-control" placeholder="00/00/0000" />
+		</div>
+
+		<div class="form-group">
+			<label>Tipo do Jogo: </label> 
+			<select name="tipoJogo"
+				class="form-control">
+				<option>Aventura</option>
+				<option>Tiro</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Modo do Jogo: </label> 
+			<input type="radio" name="modoJogo"
+				class="form-control">Single <input type="radio"
+				name="modoJogo" class="form-control">Multi
+		</div>		
+
+		<div class="form-group">
+			<label>Plataforma: </label> 
+			<input type="checkbox" name="plataforma"
+				class="form-control">Ps4 <input type="checkbox"
+				name="plataforma" class="form-control">Xbox
+		</div>
+
+		<div class="form-group">
+			<label>Descrição: </label>
+			<textarea name="descricao" rows="5" cols="50" class="estiloTextArea"
+				class="form-control"></textarea>
+		</div>
+
+		<input type="submit" value="Salvar" class="btn btn-primary"> <input
+			type="reset" value="Limpar" class="btn btn-primary">
+
+	</form>
+
+	<table class="table">
+		<tr>
+			<th>Código do Jogo</th>
+			<th>Nome do Jogo</th>
+			<th>Tipo do Jogo</th>
+			<th>Modo do Jogo</th>
+			<th>Plataforma</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Call of Duty</td>
+			<td>Aventura</td>
+			<td>Single</td>
+			<td>Ps4 / Xbox</td>
+		</tr>
+
+	</table>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<script src="js/jquery.mask.min.js"></script>
+	
+	<script>
+	
+	 $('#data').mask('00/00/0000');
+	
+	</script>
+	
+</body>
+</html>
