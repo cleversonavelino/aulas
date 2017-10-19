@@ -1,28 +1,18 @@
-<html>
-<head>
-<title>Meu Segundo HTML</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Cadastro de Jogo</title>
 
-<style>
+	<!-- IMPORTAÃ‡ÃƒO DO CSS DO BOOTSTRAP -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
 
-/* input {
-			border: 1px solid #000000;
-			background-color: gray;
-		}
-		
-		.estiloTextArea {
-			border: 1px solid #000000;
-			background-color: gray;
-		} */
-</style>
+</h:head>
+<h:body>
 
-<!-- IMPORTAÇÃO DO CSS DO BOOTSTRAP -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
-	<!-- <a href="exemplo.html">Página 1</a>
-	<a href="formulario.html">Página 2</a>
- -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Sistema de Jogos</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -51,23 +41,23 @@
 	<div class="container">
 
 		<h1>Cadastro de Jogo</h1>
-		<form action="formulario.html" method="post">
+		<form jsf:id="form" method="post">
 
 
 			<div class="form-group row">
-				<label for="codigoJogo" class="col-sm-2 col-form-label">Código
+				<label for="codigoJogo" class="col-sm-2 col-form-label">CÃ³digo
 					do Jogo: </label>
 				<div class="col-sm-10">
 					<input type="text" name="codigoJogo" class="form-control"
-						placeholder="Digite o código do jogo" />
+						placeholder="Digite o cÃ³digo do jogo" readonly="readonly" />
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Nome do Jogo: </label>
 				<div class="col-sm-10">
-					<input type="text" name="nomeJogo" class="form-control"
-						placeholder="Digite o nome do jogo" />
+					<input jsf:id="nomeJogo" jsf:value="#{mBeanJogo.nome}" type="text"
+						class="form-control" placeholder="Digite o nome do jogo" />
 				</div>
 			</div>
 
@@ -93,8 +83,8 @@
 				<label class="col-sm-2 col-form-label">Modo do Jogo: </label>
 
 				<div class="col-sm-10">
-					<input type="radio" name="modoJogo" class="form-control">Single
-					<input type="radio" name="modoJogo" class="form-control">Multi
+					<input type="radio" name="modoJogo" class="form-control" />Single <input
+						type="radio" name="modoJogo" class="form-control" />Multi
 				</div>
 			</div>
 
@@ -102,42 +92,56 @@
 				<label class="col-sm-2 col-form-label">Plataforma: </label>
 
 				<div class="col-sm-10">
-					<input type="checkbox" name="plataforma" class="form-control">Ps4
-					<input type="checkbox" name="plataforma" class="form-control">Xbox
+					<input type="checkbox" name="plataforma" class="form-control" />Ps4
+					<input type="checkbox" name="plataforma" class="form-control" />Xbox
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Descrição: </label>
+				<label class="col-sm-2 col-form-label">DescriÃ§Ã£o: </label>
 
 				<div class="col-sm-10">
 					<textarea name="descricao" rows="5" cols="50"
-						class="estiloTextArea" class="form-control"></textarea>
+						class="estiloTextArea form-control"></textarea>
 				</div>
 			</div>
 
-			<input type="submit" value="Salvar" class="btn btn-primary">
-			<input type="reset" value="Limpar" class="btn btn-primary">
+			
+			<input type="submit" jsf:id="btnSalvar"
+				jsf:action="#{mBeanJogo.salvar}" value="Salvar"
+				class="btn btn-primary">
+			
+			<f:ajax event="action" execute="@form" render="@form"></f:ajax>
+			
+			
+			</input>
+			
+			 <input type="reset" value="Limpar" class="btn btn-primary" />
+
+
+
+			<table class="table">
+				<tr>
+					<th>CÃ³digo do Jogo</th>
+					<th>Nome do Jogo</th>
+					<th>Tipo do Jogo</th>
+					<th>Modo do Jogo</th>
+					<th>Plataforma</th>
+				</tr>
+
+				<ui:repeat var="jogo" value="#{mBeanJogo.jogos}">
+					<tr>
+						<td>1</td>
+						<td>#{jogo.nome}</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</ui:repeat>
+
+			</table>
 
 		</form>
-
-		<table class="table">
-			<tr>
-				<th>Código do Jogo</th>
-				<th>Nome do Jogo</th>
-				<th>Tipo do Jogo</th>
-				<th>Modo do Jogo</th>
-				<th>Plataforma</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Call of Duty</td>
-				<td>Aventura</td>
-				<td>Single</td>
-				<td>Ps4 / Xbox</td>
-			</tr>
-
-		</table>
 
 	</div>
 
@@ -151,5 +155,5 @@
 		$('#data').mask('00/00/0000');
 	</script>
 
-</body>
+</h:body>
 </html>
