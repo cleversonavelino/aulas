@@ -48,92 +48,108 @@
 		</div>
 	</nav>
 
-	<h1>Cadastro de Jogo</h1>
-	<form action="formulario.html" method="post">
+	<div class="container">
+
+		<h1>Cadastro de Jogo</h1>
+		<form action="formulario.html" method="post">
 
 
-		<div class="form-group">
-			<label for="codigoJogo">Código do Jogo: </label>
-			 <input type="text"
-				name="codigoJogo" class="form-control"
-				placeholder="Digite o código do jogo" />
-		</div> 	
+			<div class="form-group row">
+				<label for="codigoJogo" class="col-sm-2 col-form-label">Código
+					do Jogo: </label>
+				<div class="col-sm-10">
+					<input type="text" name="codigoJogo" class="form-control"
+						placeholder="Digite o código do jogo" />
+				</div>
+			</div>
 
-		<div class="form-group">
-			<label>Nome do Jogo: </label> 
-			<input type="text" name="nomeJogo"
-				class="form-control" placeholder="Digite o nome do jogo" />
-		</div>
-		
-		<div class="form-group">
-			<label>Data: </label> <input type="date" id="data" 
-				name="data"
-				class="form-control" placeholder="00/00/0000" />
-		</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nome do Jogo: </label>
+				<div class="col-sm-10">
+					<input type="text" name="nomeJogo" class="form-control"
+						placeholder="Digite o nome do jogo" />
+				</div>
+			</div>
 
-		<div class="form-group">
-			<label>Tipo do Jogo: </label> 
-			<select name="tipoJogo"
-				class="form-control">
-				<option>Aventura</option>
-				<option>Tiro</option>
-			</select>
-		</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Data: </label>
+				<div class="col-sm-10">
+					<input type="date" id="data" name="data" class="form-control"
+						placeholder="00/00/0000" />
+				</div>
+			</div>
 
-		<div class="form-group">
-			<label>Modo do Jogo: </label> 
-			<input type="radio" name="modoJogo"
-				class="form-control">Single <input type="radio"
-				name="modoJogo" class="form-control">Multi
-		</div>		
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Tipo do Jogo: </label>
+				<div class="col-sm-10">
+					<select name="tipoJogo" class="form-control">
+						<option>Aventura</option>
+						<option>Tiro</option>
+					</select>
+				</div>
+			</div>
 
-		<div class="form-group">
-			<label>Plataforma: </label> 
-			<input type="checkbox" name="plataforma"
-				class="form-control">Ps4 <input type="checkbox"
-				name="plataforma" class="form-control">Xbox
-		</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Modo do Jogo: </label>
 
-		<div class="form-group">
-			<label>Descrição: </label>
-			<textarea name="descricao" rows="5" cols="50" class="estiloTextArea"
-				class="form-control"></textarea>
-		</div>
+				<div class="col-sm-10">
+					<input type="radio" name="modoJogo" class="form-control">Single
+					<input type="radio" name="modoJogo" class="form-control">Multi
+				</div>
+			</div>
 
-		<input type="submit" value="Salvar" class="btn btn-primary"> <input
-			type="reset" value="Limpar" class="btn btn-primary">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Plataforma: </label>
 
-	</form>
+				<div class="col-sm-10">
+					<input type="checkbox" name="plataforma" class="form-control">Ps4
+					<input type="checkbox" name="plataforma" class="form-control">Xbox
+				</div>
+			</div>
 
-	<table class="table">
-		<tr>
-			<th>Código do Jogo</th>
-			<th>Nome do Jogo</th>
-			<th>Tipo do Jogo</th>
-			<th>Modo do Jogo</th>
-			<th>Plataforma</th>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Call of Duty</td>
-			<td>Aventura</td>
-			<td>Single</td>
-			<td>Ps4 / Xbox</td>
-		</tr>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Descrição: </label>
 
-	</table>
+				<div class="col-sm-10">
+					<textarea name="descricao" rows="5" cols="50"
+						class="estiloTextArea" class="form-control"></textarea>
+				</div>
+			</div>
+
+			<input type="submit" value="Salvar" class="btn btn-primary">
+			<input type="reset" value="Limpar" class="btn btn-primary">
+
+		</form>
+
+		<table class="table">
+			<tr>
+				<th>Código do Jogo</th>
+				<th>Nome do Jogo</th>
+				<th>Tipo do Jogo</th>
+				<th>Modo do Jogo</th>
+				<th>Plataforma</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Call of Duty</td>
+				<td>Aventura</td>
+				<td>Single</td>
+				<td>Ps4 / Xbox</td>
+			</tr>
+
+		</table>
+
+	</div>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	
+
 	<script src="js/jquery.mask.min.js"></script>
-	
+
 	<script>
-	
-	 $('#data').mask('00/00/0000');
-	
+		$('#data').mask('00/00/0000');
 	</script>
-	
+
 </body>
 </html>
