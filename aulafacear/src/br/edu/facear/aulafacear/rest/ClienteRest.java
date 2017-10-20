@@ -13,7 +13,7 @@ import br.edu.facear.aulafacear.dao.FactoryDao;
 import br.edu.facear.aulafacear.dao.InterfaceDao;
 import br.edu.facear.aulafacear.entity.Cliente;
 
-@Path("/clienterest")
+@Path("/clientes")
 public class ClienteRest {
 	
 	@GET
@@ -26,6 +26,7 @@ public class ClienteRest {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	//{"cpf":null,"id":1,"nome":"Cleverson"}
 	public void cadastrarCliente(Cliente cliente) {
 		InterfaceDao<Cliente> dao = 
 				FactoryDao.createClienteDao();
