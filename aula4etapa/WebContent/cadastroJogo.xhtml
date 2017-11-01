@@ -27,7 +27,8 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Nome do Jogo: </label>
 				<div class="col-sm-10">
-					<input jsf:id="nomeJogo" jsf:value="#{mBeanJogo.nome}" type="text"
+					<input jsf:id="nomeJogo" 
+					jsf:value="#{mBeanJogo.nome}" type="text"
 						class="form-control" placeholder="Digite o nome do jogo"
 						required="required" />
 				</div>
@@ -36,10 +37,28 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Data: </label>
 				<div class="col-sm-10">
-					<input type="date" id="data" name="data" class="form-control"
-						placeholder="00/00/0000" />
+					<input type="date" jsf:id="data" 
+						name="data" class="form-control"
+						placeholder="00/00/0000"
+						jsf:value="#{mBeanJogo.data}" >
+						<f:convertDateTime pattern="dd/MM/yyyy"
+						timeZone="GMT-3"></f:convertDateTime>
+						</input>
 				</div>
 			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Valor: </label>
+				<div class="col-sm-10">
+					<input type="text" jsf:id="valor" 
+						name="valor" class="form-control"
+						jsf:value="#{mBeanJogo.valor}" >
+						<f:convertNumber locale="pt_BR" 
+						minFractionDigits="2"></f:convertNumber>
+						</input>
+				</div>
+			</div>
+			
 
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Tipo do Jogo: </label>
