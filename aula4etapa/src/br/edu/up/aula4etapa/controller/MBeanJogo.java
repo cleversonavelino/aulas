@@ -26,6 +26,7 @@ public class MBeanJogo {
 		jogo.setDescricao(descricao);
 
 		new JogoDao().inserir(jogo);
+		jogos = new JogoDao().listar();
 	}
 
 	public String getNome() {

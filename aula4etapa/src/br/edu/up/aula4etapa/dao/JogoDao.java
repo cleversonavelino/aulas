@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import br.edu.up.aula4etapa.entity.Jogo;
 
@@ -15,7 +16,9 @@ public class JogoDao {
 	
 	public void inserir(Jogo jogo) {
 		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		em.persist(jogo);
+		em.getTransaction().commit();
 	}
 	
 	public Jogo buscar(Integer id) {
@@ -23,7 +26,10 @@ public class JogoDao {
 	}	
 	
 	public ArrayList<Jogo> listar() {
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("from Jogo");
+		
+		return new ArrayList<Jogo>(q.getResultList());
 	}
 	
 	public void alterar(Jogo jogo) {		
