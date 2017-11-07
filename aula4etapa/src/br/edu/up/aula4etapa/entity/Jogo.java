@@ -1,20 +1,20 @@
-package br.edu.up.as.entidade;
+package br.edu.up.aula4etapa.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Table;
 
-@XmlRootElement
 @Entity
-public class Cliente {
+@Table(name = "TAB_JOGO")
+public class Jogo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
-	private String cpf;
+	private String descricao;
 
 	public Integer getId() {
 		return id;
@@ -32,14 +32,12 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
-	
-	
 
 }

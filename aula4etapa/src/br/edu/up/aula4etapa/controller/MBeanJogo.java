@@ -1,4 +1,4 @@
-package aula4etapa;
+package br.edu.up.aula4etapa.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -6,22 +6,26 @@ import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 
+import br.edu.up.aula4etapa.dao.JogoDao;
+import br.edu.up.aula4etapa.entity.Jogo;
+
 @ManagedBean(name = "mBeanJogo")
 public class MBeanJogo {
 
-	static private ArrayList<Jogo> jogos = new ArrayList<Jogo>();
+	private ArrayList<Jogo> jogos = new ArrayList<Jogo>();
 
 	private String nome;
 	private String descricao;
 	private Date data;
-	private static BigDecimal valor;
-	
+	private BigDecimal valor;
+	private String tipoJogo;
+
 	public void salvar() {
 		Jogo jogo = new Jogo();
 		jogo.setNome(nome);
 		jogo.setDescricao(descricao);
 
-		jogos.add(jogo);
+		new JogoDao().inserir(jogo);
 	}
 
 	public String getNome() {
@@ -62,6 +66,14 @@ public class MBeanJogo {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public String getTipoJogo() {
+		return tipoJogo;
+	}
+
+	public void setTipoJogo(String tipoJogo) {
+		this.tipoJogo = tipoJogo;
 	}
 
 }
