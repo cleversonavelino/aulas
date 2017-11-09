@@ -3,42 +3,45 @@ package br.edu.up.aula4etapa.dao;
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import br.edu.up.aula4etapa.entity.Jogo;
+import br.edu.up.aula4etapa.entity.Usuario;
 
-public class JogoDao {
+public class UsuarioDao {
 	
-	public void inserir(Jogo jogo) {
+	
+	public void inserir(Usuario usuario) {
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		em.getTransaction().begin();
-		em.persist(jogo);
+		em.persist(usuario);
 		em.getTransaction().commit();
 	}
 	
-	public Jogo buscar(Integer id) {
+	public Usuario buscar(Integer id) {
 		return null;
 	}	
 	
-	public ArrayList<Jogo> listar() {
+	public ArrayList<Usuario> listar() {
 		EntityManager em = Conexao.getInstance().createEntityManager();
-		Query q = em.createQuery("from Jogo");
+		Query q = em.createQuery("from Usuario");
 		
-		return new ArrayList<Jogo>(q.getResultList());
+		return new ArrayList<Usuario>(q.getResultList());
 	}
 	
-	public void alterar(Jogo jogo) {	
+	public void alterar(Usuario usuario) {	
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		em.getTransaction().begin();
-		em.merge(jogo);
+		em.merge(usuario);
 		em.getTransaction().commit();
 	}
 	
 	public void remover(Integer id) {	
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		em.getTransaction().begin();
-		Jogo jogo = em.find(Jogo.class, id);		
-		em.remove(jogo);
+		Usuario Usuario = em.find(Usuario.class, id);		
+		em.remove(Usuario);
 		em.getTransaction().commit();
 	}
 
