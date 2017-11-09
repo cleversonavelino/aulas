@@ -19,7 +19,7 @@
 				<label for="codigoJogo" class="col-sm-2 col-form-label">Código
 					do Jogo: </label>
 				<div class="col-sm-10">
-					<input type="text" name="codigoJogo" class="form-control"
+					<input type="text" jsf:id="id" jsf:value="#{mBeanJogo.id}" class="form-control"
 						placeholder="Digite o código do jogo" readonly="readonly" />
 				</div>
 			</div>
@@ -60,7 +60,7 @@
 			</div>
 			
 
-			<div class="form-group row">
+			<!-- <div class="form-group row">
 				<label class="col-sm-2 col-form-label">Tipo do Jogo: </label>
 				<div class="col-sm-10">
 					<select jsf:id="tipoJogo" jsf:value="#{mBeanJogo.tipoJogo}" class="form-control">
@@ -86,7 +86,7 @@
 					<input type="checkbox" name="plataforma" class="form-control" />Ps4
 					<input type="checkbox" name="plataforma" class="form-control" />Xbox
 				</div>
-			</div>
+			</div> -->
 
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Descrição: </label>
@@ -103,24 +103,27 @@
 				class="btn btn-primary"> </input> <input type="reset" value="Limpar"
 				class="btn btn-primary" />
 
-
+		</form>
+		<form jsf:id="formList" method="post">
 
 			<table class="table">
 				<tr>
 					<th>Código do Jogo</th>
 					<th>Nome do Jogo</th>
-					<th>Tipo do Jogo</th>
-					<th>Modo do Jogo</th>
-					<th>Plataforma</th>
+					<th></th>
+					<th></th>
 				</tr>
 
 				<ui:repeat var="jogo" value="#{mBeanJogo.jogos}">
 					<tr>
 						<td>#{jogo.id}</td>
 						<td>#{jogo.nome}</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><input type="submit" jsf:id="btnAlterar"
+				jsf:action="#{mBeanJogo.alterar(jogo)}" value="Alterar"
+				class="btn btn-primary"> </input></td>
+						<td><input type="submit" jsf:id="btnExcluir"
+				jsf:action="#{mBeanJogo.excluir(jogo)}" value="Excluir"
+				class="btn btn-primary"> </input></td>
 					</tr>
 				</ui:repeat>
 

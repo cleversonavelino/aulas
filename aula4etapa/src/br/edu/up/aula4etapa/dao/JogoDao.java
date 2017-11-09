@@ -32,10 +32,19 @@ public class JogoDao {
 		return new ArrayList<Jogo>(q.getResultList());
 	}
 	
-	public void alterar(Jogo jogo) {		
+	public void alterar(Jogo jogo) {	
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(jogo);
+		em.getTransaction().commit();
 	}
 	
-	public void remover() {		
+	public void remover(Integer id) {	
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Jogo jogo = em.find(Jogo.class, id);		
+		em.remove(jogo);
+		em.getTransaction().commit();
 	}
 
 }
