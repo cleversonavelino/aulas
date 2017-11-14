@@ -17,7 +17,9 @@ public class JogoDao {
 	}
 	
 	public Jogo buscar(Integer id) {
-		return null;
+		EntityManager em = Conexao.getInstance().createEntityManager();
+		Jogo jogo = em.find(Jogo.class, id);
+		return jogo;
 	}	
 	
 	public ArrayList<Jogo> listar() {
