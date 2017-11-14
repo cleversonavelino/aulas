@@ -15,6 +15,7 @@ public class Jogo {
 	private Integer id;
 	private String nome;
 	private String descricao;
+	private String caminhoImagem;
 
 	public Integer getId() {
 		return id;
@@ -34,6 +35,14 @@ public class Jogo {
 
 	public String getDescricao() {
 		return descricao;
+	}
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
 	}
 
 	public void setDescricao(String descricao) {

@@ -1,11 +1,15 @@
 package br.edu.up.aula4etapa.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+
+import org.apache.catalina.core.ApplicationPart;
 
 import br.edu.up.aula4etapa.dao.JogoDao;
 import br.edu.up.aula4etapa.entity.Jogo;
@@ -22,6 +26,8 @@ public class MBeanJogo {
 	private BigDecimal valor;
 	private String tipoJogo;
 
+	private ApplicationPart imagem;
+
 	@PostConstruct
 	public void carregar() {
 		jogos = new JogoDao().listar();
@@ -29,17 +35,40 @@ public class MBeanJogo {
 
 	public void salvar() {
 		
+		//imagem.getSubmittedFileName()
+		//imagem.getContentType()
+		//
+		
+		String caminhoImagem = "c:\\imagens\\"+imagem.getSubmittedFileName();
+		
+		try {
+			//cria um espaço de memória que vai armazenar o conteúdo da imagem
+			byte [] bytesImagem = new byte[(int) imagem.getSize()];
+			//lê o conteudo da imagem e joga dentro do array de bytes
+			imagem.getInputStream().read(bytesImagem);			
+			//cria uma referência para o arquivo que será criado no lado do server
+			File f = new File(caminhoImagem);
+			//cria o objeto que irá manipular o arquivo criado
+			FileOutputStream fos = new FileOutputStream(f);
+			//escreve o conteúdo da imagem (upload) dentro do arquivo no servidor
+			fos.write(bytesImagem);			
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
 		Jogo jogo = new Jogo();
 		jogo.setId(this.id);
 		jogo.setNome(nome);
 		jogo.setDescricao(descricao);
-		
+		jogo.setCaminhoImagem(caminhoImagem);
+
 		if (this.id == null) {
 			new JogoDao().inserir(jogo);
 		} else {
-			new JogoDao().alterar(jogo);	
+			new JogoDao().alterar(jogo);
 		}
-		
+
 		jogos = new JogoDao().listar();
 	}
 
@@ -54,7 +83,6 @@ public class MBeanJogo {
 		jogos = new JogoDao().listar();
 	}
 
-	
 	public Integer getId() {
 		return id;
 	}
@@ -109,6 +137,14 @@ public class MBeanJogo {
 
 	public void setTipoJogo(String tipoJogo) {
 		this.tipoJogo = tipoJogo;
+	}
+
+	public ApplicationPart getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(ApplicationPart imagem) {
+		this.imagem = imagem;
 	}
 
 }
