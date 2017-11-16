@@ -26,6 +26,9 @@ public class ServletImagem extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
+		if (id == null || id.equals("")) {
+			return;
+		}
 		Jogo jogo = new JogoDao().buscar(Integer.parseInt(id));
 		
 		File f = new File(jogo.getCaminhoImagem());

@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">Detalhes do Jogo</ui:define>
+
+	<ui:define name="conteudo">
+	
+	<form jsf:id="form">
+	<input type="hidden" jsf:id="id" jsf:value="#{mBeanJogo.id}"/>
+	
+	<div style="width: 50%; float: left;">
+	<h:graphicImage value="ServletImagem?id=#{mBeanJogo.id}"
+			width="60%" height="60%"></h:graphicImage>
+	</div>
+	
+	<div style="width: 50%; float: left;">
+		<p>
+			Código: <h:outputText value="#{mBeanJogo.id}"></h:outputText>
+			</p>
+			
+			<p>
+			Nome: <h:outputText value="#{mBeanJogo.nome}"></h:outputText>
+			</p>
+			
+			<input type="submit" jsf:id="detalhesJogo"
+				jsf:action="#{mBeanCarrinho.adicionar(mBeanJogo.id)}" 
+				value="Adicionar ao Carrinho"
+				class="btn btn-primary"></input>
+	</div>
+	
+	<div style="width: 100%; float: left;">
+		<h:outputText value="#{jogo.descricao}"></h:outputText>
+	</div>
+	</form>
+		
+	</ui:define>
+	
+	<ui:define name="script">
+		
+		<script>
+
+		
+		</script>
+	
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -77,6 +77,14 @@ public class MBeanJogo {
 		this.nome = jogo.getNome();
 		this.descricao = jogo.getDescricao();
 	}
+	
+	public String carregarJogo(Jogo jogo) {
+		this.id = jogo.getId();
+		this.nome = jogo.getNome();
+		this.descricao = jogo.getDescricao();
+		
+		return "telaDetalhesJogo.jsf";
+	}
 
 	public void excluir(Jogo jogo) {
 		new JogoDao().remover(jogo.getId());
