@@ -10,6 +10,8 @@
 	<ui:define name="title">Carrinho de Compras</ui:define>
 
 	<ui:define name="conteudo">
+	
+		<form jsf:id="form">
 
 		<table class="table">
 			<tr>
@@ -29,6 +31,11 @@
 			</ui:repeat>
 
 		</table>
+		
+		<input type="submit" jsf:id="salvarPedido"
+			jsf:action="#{mBeanCarrinho.salvarPedido}" value="Salvar Pedido" />
+		
+		</form>
 
 	</ui:define>
 
