@@ -25,6 +25,7 @@ public class MBeanJogo {
 	private Date data;
 	private BigDecimal valor;
 	private String tipoJogo;
+	private String caminhoImagem;
 
 	private ApplicationPart imagem;
 
@@ -34,27 +35,29 @@ public class MBeanJogo {
 	}
 
 	public void salvar() {
-		
-		//imagem.getSubmittedFileName()
-		//imagem.getContentType()
+
+		// imagem.getSubmittedFileName()
+		// imagem.getContentType()
 		//
-		
-		String caminhoImagem = "c:\\imagens\\"+imagem.getSubmittedFileName();
-		
-		try {
-			//cria um espaço de memória que vai armazenar o conteúdo da imagem
-			byte [] bytesImagem = new byte[(int) imagem.getSize()];
-			//lê o conteudo da imagem e joga dentro do array de bytes
-			imagem.getInputStream().read(bytesImagem);			
-			//cria uma referência para o arquivo que será criado no lado do server
-			File f = new File(caminhoImagem);
-			//cria o objeto que irá manipular o arquivo criado
-			FileOutputStream fos = new FileOutputStream(f);
-			//escreve o conteúdo da imagem (upload) dentro do arquivo no servidor
-			fos.write(bytesImagem);			
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
+
+		if (imagem != null && !imagem.getSubmittedFileName().equals("")) {
+			try {
+				caminhoImagem = "c:\\imagens\\" + imagem.getSubmittedFileName();
+
+				// cria um espaço de memória que vai armazenar o conteúdo da imagem
+				byte[] bytesImagem = new byte[(int) imagem.getSize()];
+				// lê o conteudo da imagem e joga dentro do array de bytes
+				imagem.getInputStream().read(bytesImagem);
+				// cria uma referência para o arquivo que será criado no lado do server
+				File f = new File(caminhoImagem);
+				// cria o objeto que irá manipular o arquivo criado
+				FileOutputStream fos = new FileOutputStream(f);
+				// escreve o conteúdo da imagem (upload) dentro do arquivo no servidor
+				fos.write(bytesImagem);
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		}
 
 		Jogo jogo = new Jogo();
@@ -76,13 +79,15 @@ public class MBeanJogo {
 		this.id = jogo.getId();
 		this.nome = jogo.getNome();
 		this.descricao = jogo.getDescricao();
+		this.caminhoImagem = jogo.getCaminhoImagem();
 	}
-	
+
 	public String carregarJogo(Jogo jogo) {
 		this.id = jogo.getId();
 		this.nome = jogo.getNome();
 		this.descricao = jogo.getDescricao();
-		
+		this.caminhoImagem = jogo.getCaminhoImagem();
+
 		return "telaDetalhesJogo.jsf";
 	}
 
@@ -153,6 +158,14 @@ public class MBeanJogo {
 
 	public void setImagem(ApplicationPart imagem) {
 		this.imagem = imagem;
+	}
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
 	}
 
 }

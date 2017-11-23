@@ -14,9 +14,15 @@
 		<h1>Cadastro de Jogo</h1>
 		<form jsf:id="form" method="post" enctype="multipart/form-data">
 			<h:messages></h:messages>
+
+			<input type="hidden"
+				jsf:id="caminhoImagem"
+				jsf:value="#{mBeanJogo.caminhoImagem}"/>
 			
 			<h:graphicImage value="ServletImagem?id=#{mBeanJogo.id}"
 			width="20%" height="20%"></h:graphicImage>
+
+
 
 			<div class="form-group row">
 				<label for="codigoJogo" class="col-sm-2 col-form-label">Código
