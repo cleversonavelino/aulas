@@ -24,7 +24,7 @@ public class JogoDao {
 	
 	public ArrayList<Jogo> listar() {
 		EntityManager em = Conexao.getInstance().createEntityManager();
-		Query q = em.createQuery("from Jogo");
+		Query q = em.createQuery("select j from Jogo j");
 		
 		return new ArrayList<Jogo>(q.getResultList());
 	}
