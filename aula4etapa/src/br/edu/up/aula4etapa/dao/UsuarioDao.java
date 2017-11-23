@@ -23,7 +23,8 @@ public class UsuarioDao {
 	
 	public Usuario buscar(String email, String senha) {
 		EntityManager em = Conexao.getInstance().createEntityManager();
-		Query q = em.createQuery("select u from Usuario u where u.email = :email and u.senha = :senha");
+		Query q = em.createQuery("select u from Usuario u "
+				+ "where u.email = :email and u.senha = :senha");
 		q.setParameter("email", email);
 		q.setParameter("senha", senha);
 		

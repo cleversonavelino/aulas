@@ -27,7 +27,12 @@ public class LoginFilter  implements Filter  {
 		HttpServletRequest req = (HttpServletRequest)arg0;
 		HttpServletResponse res = (HttpServletResponse)arg1;
 		
-		Usuario u = (Usuario) req.getSession().getAttribute("usuario");
+		//tento capturar o usuário da sessão
+		Usuario u = (Usuario) req.getSession().
+				getAttribute("usuario");
+		
+		//caso seja nulo redireciono para a tela de login
+		//neste ponto adiciono qual tela o usuário tentava acessar
 		if (u == null) {
 			req.getSession().setAttribute("pagina", "telaCarrinhoDeCompras.jsf");
 			res.sendRedirect("login.jsf");

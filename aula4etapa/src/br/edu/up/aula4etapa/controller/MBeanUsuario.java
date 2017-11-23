@@ -16,7 +16,11 @@ public class MBeanUsuario {
 	
 	public String login() {
 		
+		//procuro pelo usuario no banco de dados
 		Usuario usuario = new UsuarioDao().buscar(email, senha);
+				
+		//se o usuário for null ou melhor não for encontrado
+		//envio uma mensagem para tela avisando
 		if (usuario == null) {
 			FacesContext.getCurrentInstance().
 				addMessage("", 
@@ -25,9 +29,15 @@ public class MBeanUsuario {
 			return "";
 		}	
 		
-		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		//capture o objeto de request
+		//nele é possível recuperar a sessão		
+		HttpServletRequest req = (HttpServletRequest) 
+				FacesContext.getCurrentInstance().
+				getExternalContext().getRequest();
+		//adiciono na sessão o usuário que fez o login
 		req.getSession().setAttribute("usuario", usuario);
 		
+		//redireciono para tela que ele estava tentando acessar
 		return ""+req.getSession().getAttribute("pagina");
 	}
 
