@@ -2,13 +2,24 @@ package br.edu.up.sistemadevendas.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import br.edu.up.sistemadevendas.entity.Cliente;
 
 public class ClienteDao implements Dao<Cliente> {
 
 	@Override
 	public void salvar(Cliente cliente) {
-		cliente.setId(1);		
+		EntityManager em = Conexao.getInstance();
+
+		em.getTransaction().begin();
+		
+		em.persist(cliente);
+		
+		em.getTransaction().commit();
+		
+		em.close();	
+		
 	}
 
 	@Override
