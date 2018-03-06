@@ -6,11 +6,11 @@ import javax.persistence.Persistence;
 
 public class Conexao {
 	
-	static EntityManagerFactory emf =
+	public EntityManagerFactory emf =
 			Persistence.
 			createEntityManagerFactory("vendas");
 	
-	public static EntityManager getInstance() {
+	public EntityManager getInstance() {
 		return emf.createEntityManager();
 	}
 
