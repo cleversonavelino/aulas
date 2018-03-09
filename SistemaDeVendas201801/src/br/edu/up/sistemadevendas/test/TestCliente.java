@@ -2,6 +2,8 @@ package br.edu.up.sistemadevendas.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import br.edu.up.sistemadevendas.entity.Cliente;
@@ -10,6 +12,8 @@ import br.edu.up.sistemadevendas.service.ServiceException;
 
 public class TestCliente {
 
+	static Integer id;
+	
 	@Test
 	public void deveriaCadastrarUmCliente() {
 		
@@ -22,24 +26,40 @@ public class TestCliente {
 			new ClienteService().salvar(c);
 		} catch (ServiceException e) {
 			e.printStackTrace();
-		}
+		}		
 		
+		id = c.getId();
+		assertEquals(true, c.getId() != null);	
+			
+	}
+	
+	@Test
+	public void deveriaAlterarUmCliente() {
 		
-		assertEquals(true, c.getId() != null);
+		ClienteService s = new ClienteService();
 		
-		c = new Cliente();
-		c.setId(null);
-		c.setNome("Cleverson");
-		c.setIdade(17);
+		Cliente c = s.buscar(id);
+		c.setNome("abc");		
 		
 		try {
-			new ClienteService().salvar(c);
+			new ClienteService().alterar(c);
 		} catch (ServiceException e) {
-			//e.printStackTrace();
-		}
+			e.printStackTrace();
+		}	
 		
+		c = s.buscar(id);
 		
-		assertEquals(false, c.getId() != null);
+		assertEquals(true, c.getNome().equals("abc"));	
+			
+	}
+	
+	@Test
+	public void deveriaListarClientes() {
+		
+		ClienteService s = new ClienteService();
+		List<Cliente> clientes = s.listar();
+		
+		assertEquals(true, clientes.size() > 0);	
 			
 	}
 	
