@@ -9,7 +9,7 @@ public class Conexao {
 	static EntityManagerFactory emf = Persistence.
 				createEntityManagerFactory("aulajpa");
 	
-	public static EntityManager createEntityManager() {
+	public EntityManager createEntityManager() {
 		return emf.createEntityManager();
 	}
 

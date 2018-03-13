@@ -15,6 +15,10 @@ public class ClienteTest {
 		
 		ClienteDao clienteDao = new ClienteDao();
 		clienteDao.salvar(cliente);
+		cliente.setId(null);
+		clienteDao.salvar(cliente);
+		cliente.setId(null);
+		clienteDao.salvar(cliente);
 		
 		System.out.println(cliente.getId());
 		
