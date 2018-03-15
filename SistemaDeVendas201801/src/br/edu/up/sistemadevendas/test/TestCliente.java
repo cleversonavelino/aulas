@@ -4,15 +4,23 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 
 import br.edu.up.sistemadevendas.entity.Cliente;
 import br.edu.up.sistemadevendas.service.ClienteService;
 import br.edu.up.sistemadevendas.service.ServiceException;
 
+@FixMethodOrder()
 public class TestCliente {
 
 	static Integer id;
+	
+	public void deveriaGerenciarUmCliente() {
+		deveriaAlterarUmCliente();;
+		deveriaAlterarUmCliente();
+	}
+	
 	
 	@Test
 	public void deveriaCadastrarUmCliente() {
