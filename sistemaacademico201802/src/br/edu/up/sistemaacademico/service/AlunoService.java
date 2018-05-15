@@ -1,6 +1,7 @@
 package br.edu.up.sistemaacademico.service;
 
-import br.edu.up.sistemaacademico.dao.AlunoDao;
+import br.edu.up.sistemaacademico.dao.Dao;
+import br.edu.up.sistemaacademico.dao.FactoryDao;
 import br.edu.up.sistemaacademico.entity.Aluno;
 
 public class AlunoService {
@@ -15,7 +16,8 @@ public class AlunoService {
 			throw new ServiceException("O nome do aluno não pode ser vazio!");
 		}
 		
-		new AlunoDao().salvar(aluno);
+		Dao<Aluno> alunoDao = FactoryDao.createAlunoDao();
+		alunoDao.salvar(aluno);
 	}
 
 }
