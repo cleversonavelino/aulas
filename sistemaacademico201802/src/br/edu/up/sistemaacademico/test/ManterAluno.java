@@ -15,7 +15,7 @@ public class ManterAluno {
 		
 		Aluno a = new Aluno();
 		a.setId(null);
-		a.setNome(null);
+		a.setNome("Cleverson");
 		a.setMatricula("12345");
 		
 		try {
