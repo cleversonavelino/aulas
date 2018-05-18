@@ -27,6 +27,12 @@ public class ProfessorDao implements Dao<Professor> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Professor buscar(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

@@ -31,4 +31,10 @@ public class AlunoDaoSqlServer implements Dao<Aluno> {
 		return null;
 	}
 
+	@Override
+	public Aluno buscar(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
