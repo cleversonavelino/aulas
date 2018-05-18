@@ -2,17 +2,20 @@ package br.edu.up.sistemaacademico.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.List;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.edu.up.sistemaacademico.entity.Aluno;
 import br.edu.up.sistemaacademico.service.AlunoService;
 import br.edu.up.sistemaacademico.service.ServiceException;
 
+@FixMethodOrder(MethodSorters.JVM)
 public class ManterAluno {
+	
+	static Long id;
 	
 	@Test
 	public void deveriaCadastrarUmAluno() {
@@ -29,52 +32,33 @@ public class ManterAluno {
 		}
 		
 		assertEquals(true,a.getId() != null);
+		id = a.getId();
+	}
+	
+	@Test
+	public void deveriaAlterarUmAluno() {
 		
+		Aluno a = new AlunoService().buscar(id);
 		
+		a.setNome("ABC");
 		
+		try {
+			new AlunoService().salvar(a);
+		} catch (ServiceException e) {			
+			e.printStackTrace();
+		}
 		
+		a = new AlunoService().buscar(id);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		assertEquals(true,a.getNome().equals("ABC"));
 		
 	}
 	
-	public static void main(String[] args) {
-		Date hoje = new Date();
-		System.out.println(hoje);
+	@Test
+	public void deveriaListarOsAlunos() {
+		List<Aluno> alunos = new AlunoService().listar();
 		
-		//java 1.4
-		//Calendar calendar = new GregorianCalendarAdvance();
-		
-		//java 1.8
-		//Calendar calendar = new GregorianCalendar();
-		
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(hoje);
-		
-		calendar.add(Calendar.DAY_OF_MONTH, 2);
-		
-		Date entrega = calendar.getTime();
-		System.out.println(entrega);
-		
+		assertEquals(true,alunos != null && alunos.size() > 0);
 	}
-
+	
 }
