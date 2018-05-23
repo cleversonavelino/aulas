@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soap.sistemaacademico.up.edu.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap.sistemaacademico.up.edu.br" xmlns:intf="http://soap.sistemaacademico.up.edu.br" xmlns:tns1="http://entity.sistemaacademico.up.edu.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.sistemaacademico.up.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://entity.sistemaacademico.up.edu.br"/>
+   <element name="salvar">
+    <complexType>
+     <sequence>
+      <element name="aluno" type="tns1:Aluno"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="salvarResponse">
+    <complexType/>
+   </element>
+   <element name="listar">
+    <complexType/>
+   </element>
+   <element name="listarResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="listarReturn" type="tns1:Aluno"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://entity.sistemaacademico.up.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Aluno">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:long"/>
+     <element name="matricula" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="listarRequest">
+
+      <wsdl:part element="impl:listar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="salvarResponse">
+
+      <wsdl:part element="impl:salvarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarResponse">
+
+      <wsdl:part element="impl:listarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="salvarRequest">
+
+      <wsdl:part element="impl:salvar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AlunoSoap">
+
+      <wsdl:operation name="salvar">
+
+         <wsdl:input message="impl:salvarRequest" name="salvarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:salvarResponse" name="salvarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listar">
+
+         <wsdl:input message="impl:listarRequest" name="listarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listarResponse" name="listarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AlunoSoapSoapBinding" type="impl:AlunoSoap">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="salvar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="salvarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="salvarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AlunoSoapService">
+
+      <wsdl:port binding="impl:AlunoSoapSoapBinding" name="AlunoSoap">
+
+         <wsdlsoap:address location="http://localhost:8080/sistemaacademico201802/services/AlunoSoap"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

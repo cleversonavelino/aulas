@@ -1,0 +1,39 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AlunoSoapService WSDL service -->
+
+  <service name="AlunoSoap" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soap.sistemaacademico.up.edu.br"/>
+      <parameter name="wsdlServiceElement" value="AlunoSoapService"/>
+      <parameter name="schemaQualified" value="http://entity.sistemaacademico.up.edu.br,http://soap.sistemaacademico.up.edu.br"/>
+      <parameter name="wsdlServicePort" value="AlunoSoap"/>
+      <parameter name="className" value="br.edu.up.sistemaacademico.soap.AlunoSoapSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AlunoSoap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="salvar" qname="operNS:salvar" xmlns:operNS="http://soap.sistemaacademico.up.edu.br" soapAction="" >
+        <parameter qname="pns:aluno" xmlns:pns="http://soap.sistemaacademico.up.edu.br" type="tns:Aluno" xmlns:tns="http://entity.sistemaacademico.up.edu.br"/>
+      </operation>
+      <operation name="listar" qname="operNS:listar" xmlns:operNS="http://soap.sistemaacademico.up.edu.br" returnQName="retNS:listarReturn" xmlns:retNS="http://soap.sistemaacademico.up.edu.br" returnType="rtns:Aluno" xmlns:rtns="http://entity.sistemaacademico.up.edu.br" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="listar salvar"/>
+
+      <typeMapping
+        xmlns:ns="http://entity.sistemaacademico.up.edu.br"
+        qname="ns:Aluno"
+        type="java:br.edu.up.sistemaacademico.entity.Aluno"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
