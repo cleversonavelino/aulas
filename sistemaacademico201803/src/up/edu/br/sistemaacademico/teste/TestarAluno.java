@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import up.edu.br.sistemaacademico.entidades.Aluno;
 import up.edu.br.sistemaacademico.servico.AlunoServico;
+import up.edu.br.sistemaacademico.servico.ServicoException;
 
 public class TestarAluno {
 	
@@ -16,7 +17,11 @@ public class TestarAluno {
 		a.setNome("Cleverson");
 		a.setMatricula("12345");
 		
-		new AlunoServico().adicionar(a);
+		try {
+			new AlunoServico().adicionar(a);
+		} catch (ServicoException e) {
+			e.printStackTrace();
+		}
 		
 		assertEquals(true, a.getId() != null);
 	}

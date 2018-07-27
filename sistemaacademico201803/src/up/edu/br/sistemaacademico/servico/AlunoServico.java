@@ -5,9 +5,10 @@ import up.edu.br.sistemaacademico.entidades.Aluno;
 
 public class AlunoServico {
 	
-	public void adicionar(Aluno aluno) {
+	public void adicionar(Aluno aluno) throws ServicoException {
 		if (aluno.getMatricula() == null) {
-			//erro
+			throw new ServicoException("O campo matricula "
+					+ "não pode ser vazio.");
 		}
 		new AlunoDao().adicionar(aluno);
 	}
