@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import up.edu.br.sistemaacademico.entidades.Aluno;
 
@@ -30,7 +31,9 @@ public class AlunoDao implements Dao<Aluno> {
 	}
 	
 	public List<Aluno> listar() {
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("select a from Aluno a");
+		return q.getResultList();
 	}
 
 }
