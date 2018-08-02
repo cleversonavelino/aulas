@@ -11,12 +11,8 @@ import up.edu.br.sistemaacademico.entidades.Aluno;
 
 public class AlunoDao implements Dao<Aluno> {
 	
-	EntityManagerFactory emf = Persistence.
-			createEntityManagerFactory("sistemaacademico");
-	
-	
 	public void adicionar(Aluno aluno) {
-		EntityManager em = emf.createEntityManager();		
+		EntityManager em = Conexao.getInstance().createEntityManager();		
 		em.getTransaction().begin();
 		em.persist(aluno);
 		em.getTransaction().commit();
@@ -31,9 +27,15 @@ public class AlunoDao implements Dao<Aluno> {
 	}
 	
 	public List<Aluno> listar() {
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = Conexao.getInstance().createEntityManager();
 		Query q = em.createQuery("select a from Aluno a");
 		return q.getResultList();
+	}
+
+	@Override
+	public Aluno buscarPorId(Long id) {
+		EntityManager em = Conexao.getInstance().createEntityManager();
+		return em.find(Aluno.class, id);
 	}
 
 }

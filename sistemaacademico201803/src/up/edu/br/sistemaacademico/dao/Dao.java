@@ -11,5 +11,7 @@ public interface Dao<T> {
 	public void excluir(T t);
 
 	public List<T> listar();
+	
+	public T buscarPorId(Long id);
 
 }

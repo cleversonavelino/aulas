@@ -2,6 +2,9 @@ package up.edu.br.sistemaacademico.teste;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Test;
@@ -34,6 +37,45 @@ public class TestarAluno {
 		List<Aluno> alunos = new AlunoDao().listar();
 		
 		assertEquals(true, alunos.size() > 0);
+	}
+	
+	public static void main(String[] args) {
+		Date d = new Date();
+		System.out.println(d);
+		
+		//Factory
+		
+		///java 1.4
+		Calendar c = Calendar.getInstance();	//new GregorianAdvanced();
+		c.setTime(d);
+		
+		///java > 1.4
+		//Calendar c = Calendar.getInstance();//new GregorianCalendar();
+		//c.setTime(d);
+		
+		c.add(Calendar.DAY_OF_MONTH,2);
+		System.out.println(c.getTime());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
