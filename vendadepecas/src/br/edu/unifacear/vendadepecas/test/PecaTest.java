@@ -1,6 +1,10 @@
 package br.edu.unifacear.vendadepecas.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
@@ -25,6 +29,39 @@ public class PecaTest {
 		}
 		
 		assertEquals(true,p.getId() != null);
+		
+	}
+	
+	public static void main(String[] args) {
+		Date hoje = new Date();
+		System.out.println(hoje);
+		
+		//1.4
+		//Calendar calendar = Calendar.getInstance();//return new OldGregorianCalendar();
+		
+		//1.5
+		Calendar calendar = Calendar.getInstance();// return new GregorianCalendar();
+		calendar.setTime(hoje);
+		
+		System.out.println(calendar.getTime());
+		
+		calendar.add(Calendar.DAY_OF_MONTH, 2);
+		
+		System.out.println(calendar.getTime());
+		
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
