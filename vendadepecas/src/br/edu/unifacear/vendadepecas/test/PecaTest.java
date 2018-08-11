@@ -4,12 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
 import br.edu.unifacear.vendadepecas.business.BusinessException;
-import br.edu.unifacear.vendadepecas.business.PecaBusiness;
+import br.edu.unifacear.vendadepecas.business.FacadeBusiness;
 import br.edu.unifacear.vendadepecas.entity.Peca;
 
 public class PecaTest {
@@ -22,7 +21,7 @@ public class PecaTest {
 		p.setNome("abc");
 		
 		try {
-			new PecaBusiness().inserir(p);
+			new FacadeBusiness().inserir(p);
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
