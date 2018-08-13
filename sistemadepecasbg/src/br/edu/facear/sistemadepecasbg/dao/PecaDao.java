@@ -34,7 +34,7 @@ public class PecaDao implements Dao<Peca> {
 	}
 
 	@Override
-	public Peca buscar(Long id) {
+	public Peca buscar(Integer id) {
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		return em.find(Peca.class, id);
 	}
