@@ -9,14 +9,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import io.swagger.annotations.Api;
 import up.edu.br.sistemaacademico.dao.AlunoDao;
 import up.edu.br.sistemaacademico.entidades.Aluno;
 import up.edu.br.sistemaacademico.servico.AlunoServico;
 import up.edu.br.sistemaacademico.servico.ServicoException;
 
-//http://localhost:8080/rest/alunorest
+//http://localhost:8080/sistemaacademico201803/rest/alunorest
 
 @Path("/alunorest")
+@Api(value="/alunorest")
 public class AlunoRest {
 	
 	@POST
