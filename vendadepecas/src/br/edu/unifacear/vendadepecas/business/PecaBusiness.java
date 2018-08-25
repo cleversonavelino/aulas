@@ -12,6 +12,9 @@ public class PecaBusiness {
 			throw new BusinessException("Erro: Nome não pode ser vazio");
 		}
 		
+		//código da validação adicional
+		//
+		
 		Dao<Peca> pecaDao = FabricaDao.criarPecaDao();
 		pecaDao.inserir(peca);
 		

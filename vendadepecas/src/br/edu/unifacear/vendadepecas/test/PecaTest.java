@@ -27,6 +27,18 @@ public class PecaTest {
 			e.printStackTrace();
 		}
 		
+		p = new Peca();
+		p.setId(null);
+		p.setNome("abcde");
+		
+		try {
+			new FacadeBusiness().inserir(p);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		assertEquals(true,p.getId() != null);
 		
 	}	

@@ -4,15 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import br.edu.unifacear.vendadepecas.entity.Peca;
 
 public class PecaDao implements Dao<Peca> {
 	
-	EntityManagerFactory emf = Persistence.
-			createEntityManagerFactory("as");
+	EntityManagerFactory emf =  Conexao.getInstance();
 	
 	public void inserir(Peca peca) {
 		EntityManager em = emf.createEntityManager();
