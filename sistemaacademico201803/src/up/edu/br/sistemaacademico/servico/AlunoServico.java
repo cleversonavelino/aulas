@@ -15,5 +15,15 @@ public class AlunoServico {
 		Dao<Aluno> alunoDao = FabricaDao.createDaoAluno();
 		alunoDao.adicionar(aluno);
 	}
+	
+	public void editar(Aluno aluno) throws ServicoException {
+		if (aluno.getMatricula() == null) {
+			throw new ServicoException("O campo matricula "
+					+ "não pode ser vazio.");
+		}
+		
+		Dao<Aluno> alunoDao = FabricaDao.createDaoAluno();
+		alunoDao.editar(aluno);
+	}
 
 }
