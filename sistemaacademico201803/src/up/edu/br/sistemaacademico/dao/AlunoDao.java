@@ -24,7 +24,10 @@ public class AlunoDao implements Dao<Aluno> {
 	}
 	
 	public void excluir(Aluno aluno) {
-		
+		EntityManager em = Conexao.getInstance().createEntityManager();		
+		em.getTransaction().begin();
+		em.remove(em.merge(aluno));
+		em.getTransaction().commit();
 	}
 	
 	public List<Aluno> listar() {
