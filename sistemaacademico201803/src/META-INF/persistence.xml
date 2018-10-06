@@ -12,7 +12,7 @@
 			<property name="javax.persistence.jdbc.driver" 
 				value="org.h2.Driver"/>
 			<property name="javax.persistence.jdbc.url" 
-				value="jdbc:h2:tcp://localhost/~/test"/>
+				value="jdbc:h2:tcp://localhost/~/test4"/>
 			<property name="javax.persistence.jdbc.user" value="sa"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 
@@ -23,4 +23,26 @@
 			<property name="hibernate.default_schema" value="public"/>
 		</properties>
 	</persistence-unit>
+	
+	<!-- <persistence-unit name="sistemaacademico" transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://node148680-aulafacearanderson.jelasticlw.com.br/mysql" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="FYRymn37461" />
+
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			
+			<property name="hibernate.default_schema" value="public"/>
+		</properties>
+	</persistence-unit> -->
+	
 </persistence>
