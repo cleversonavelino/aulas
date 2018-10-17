@@ -2,13 +2,12 @@ package br.edu.unifacear.vendadepecas.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.junit.Test;
 
 import br.edu.unifacear.vendadepecas.business.BusinessException;
 import br.edu.unifacear.vendadepecas.business.FacadeBusiness;
+import br.edu.unifacear.vendadepecas.dao.Dao;
+import br.edu.unifacear.vendadepecas.dao.FabricaDao;
 import br.edu.unifacear.vendadepecas.entity.Peca;
 
 public class PecaTest {
@@ -40,6 +39,42 @@ public class PecaTest {
 		
 		
 		assertEquals(true,p.getId() != null);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Dao<Peca> pecaDao = FabricaDao.criarPecaDao();
+		pecaDao.inserir(new Peca());
+		
+		
+		//1.4
+		//Calendar calendario = new GregorianCalendar();
+		
+		//1.5
+		//Calendar calendario = new AdvancedGregorianCalendar();
+		
+		//Calendar calendario = Calendar.getInstance();
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}	
 	
