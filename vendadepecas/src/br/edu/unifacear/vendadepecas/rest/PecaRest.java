@@ -14,10 +14,12 @@ import br.edu.unifacear.vendadepecas.business.FacadeBusiness;
 import br.edu.unifacear.vendadepecas.dao.Dao;
 import br.edu.unifacear.vendadepecas.dao.FabricaDao;
 import br.edu.unifacear.vendadepecas.entity.Peca;
+import io.swagger.annotations.Api;
 
 //http://localhost:8080/vendadepecas/rest/pecarest
 
 @Path("/pecarest")
+@Api("/pecarest")
 public class PecaRest {
 	
 	@GET
