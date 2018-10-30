@@ -2,6 +2,26 @@
 
 require_once 'funcoes.php';
 
+$nome = "";
+$idade = "";
+$id = "";
+$acao = "";
+
+if (!empty($_GET)) {
+  $id = $_GET['id'];
+  $acao = $_GET['acao'];
+  
+  if ($acao == 'carregar') {
+    $cliente = buscarCliente($id);
+    $nome = $cliente['nome'];
+    $idade = $cliente['idade'];
+  }
+
+  if ($acao == 'excluir') {
+    excluirCliente($id);
+  }
+}
+
 if (!empty($_POST)) {
   salvarCliente($_POST);
 }
@@ -46,13 +66,18 @@ $clientes = listarClientes();
      <h2>Cadastro</h2>
 
       <form method="POST">
+        <input type="hidden" name="id" value="<?=$id?>"/>
         <div class="form-group">
           <label for="nome">Nome</label>
-          <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome!">          
+          <input type="text" class="form-control" name="nome" id="nome" 
+          value="<?=$nome?>"
+          placeholder="Digite seu nome!">          
         </div>
         <div class="form-group">
           <label for="nome">Idade</label>
-          <input type="number" class="form-control" name="idade" id="idade" placeholder="Digite a sua idade!">          
+          <input type="number" class="form-control" name="idade" id="idade"
+          value="<?=$idade?>"
+           placeholder="Digite a sua idade!">          
         </div>
 
         <input type="submit" class="btn btn-primary" value="Cadastrar"></input>
@@ -63,6 +88,8 @@ $clientes = listarClientes();
             <th>ID</th>
             <th>NOME</th>
             <th>IDADE</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
           </tr>
           <?php
             foreach($clientes as $cliente) {
@@ -71,6 +98,8 @@ $clientes = listarClientes();
             <td><?=$cliente['id']?></td>
             <td><?=$cliente['nome']?></td>
             <td><?=$cliente['idade']?></td>
+            <td><a class="btn btn-primary" href="index.php?acao=carregar&id=<?=$cliente["id"]?>">Carregar</a></td>
+            <td><a class="btn btn-primary" href="index.php?acao=excluir&id=<?=$cliente["id"]?>">Excluir</a></td>
           </tr>
           <?php
           }
