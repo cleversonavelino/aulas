@@ -1,21 +1,17 @@
 package br.edu.facear.sistemadepecasbg.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class Peca {
+public class Modelo {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	private Modelo modelo;
 
 	public Integer getId() {
 		return id;
@@ -31,14 +27,6 @@ public class Peca {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Modelo getModelo() {
-		return modelo;
-	}
-
-	public void setModelo(Modelo modelo) {
-		this.modelo = modelo;
 	}
 
 }

@@ -12,39 +12,39 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import br.edu.facear.sistemadepecasbg.dao.ModeloDao;
-import br.edu.facear.sistemadepecasbg.dao.PecaDao;
-import br.edu.facear.sistemadepecasbg.entity.Peca;
+import br.edu.facear.sistemadepecasbg.entity.Modelo;
 import io.swagger.annotations.Api;
 
-@Path("/peca")
-@Api(value = "/peca", description = "Alunos do sistema")
-public class PecaRest {
+@Path("/modelo")
+@Api(value = "/modelo")
+public class ModeloRest {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Peca> listar() {
-		List<Peca> alunos = new PecaDao().listar();
-		return alunos;
+	public List<Modelo> listar() {
+		List<Modelo> modelos = new ModeloDao().listar();
+		return modelos;
 	}
-
+	
 	@GET
 	@Path("/id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Peca buscar(@QueryParam("id") Integer id) {
-		return new PecaDao().buscar(id);
+	public Modelo buscar(@QueryParam("id") Integer id) {
+		return new ModeloDao().buscar(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void salvar(Peca peca) {
-
-		new PecaDao().salvar(peca);
+	public void salvar(Modelo modelo) {
+		new ModeloDao().salvar(modelo);
 	}
+	
+	
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void editar(Peca peca) {
-		new PecaDao().salvar(peca);
+	public void editar(Modelo modelo) {
+		new ModeloDao().salvar(modelo);
 	}
 
 }

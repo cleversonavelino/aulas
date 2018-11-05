@@ -6,42 +6,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.facear.sistemadepecasbg.entity.Modelo;
-import br.edu.facear.sistemadepecasbg.entity.Peca;
 
-public class PecaDao implements Dao<Peca> {
+public class ModeloDao implements Dao<Modelo> {
 
-	public void salvar(Peca p) {
+	public void salvar(Modelo p) {
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		em.getTransaction().begin();
-		if (p.getModelo() != null && 
-				p.getModelo().getId() != null) {
-			p.setModelo(em.find(Modelo.class, p.getModelo().getId()));
-		}
 		em.persist(p);		
 		em.getTransaction().commit();
 	}
 	
-	public void editar(Peca p) {
+	public void editar(Modelo p) {
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		em.getTransaction().begin();
 		em.merge(p);		
 		em.getTransaction().commit();
 	}
 	
-	public void excluir(Peca p) {
+	public void excluir(Modelo p) {
 		
 	}
 	
-	public List<Peca> listar() {
+	public List<Modelo> listar() {
 		EntityManager em = Conexao.getInstance().createEntityManager();
-		Query q = em.createQuery("select p from Peca p");
+		Query q = em.createQuery("select p from Modelo p");
 		return q.getResultList();		
 	}
 
 	@Override
-	public Peca buscar(Integer id) {
+	public Modelo buscar(Integer id) {
 		EntityManager em = Conexao.getInstance().createEntityManager();
-		return em.find(Peca.class, id);
+		return em.find(Modelo.class, id);
 	}
 
 }
