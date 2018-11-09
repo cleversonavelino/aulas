@@ -16,7 +16,11 @@ public class PecaBusiness {
 		//
 		
 		Dao<Peca> pecaDao = FabricaDao.criarPecaDao();
-		pecaDao.inserir(peca);
+		if (peca.getId() == null) {
+			pecaDao.inserir(peca);
+		} else {
+			pecaDao.alterar(peca);
+		}
 		
 	}
 
