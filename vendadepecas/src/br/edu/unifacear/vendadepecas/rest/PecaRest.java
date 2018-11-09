@@ -40,4 +40,11 @@ public class PecaRest {
 		}
 	}
 	
+	@POST
+	@Path("/excluir")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void excluir(Peca peca) {
+		new FacadeBusiness().excluir(peca);
+	}
+	
 }
