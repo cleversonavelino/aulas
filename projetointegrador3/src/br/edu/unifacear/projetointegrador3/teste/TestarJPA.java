@@ -7,6 +7,7 @@ import java.util.Map;
 import br.edu.unifacear.projetointegrador3.dao.Dao;
 import br.edu.unifacear.projetointegrador3.dao.GenericDao;
 import br.edu.unifacear.projetointegrador3.entidade.Carro;
+import br.edu.unifacear.projetointegrador3.entidade.Usuario;
 
 public class TestarJPA {
 
@@ -36,6 +37,43 @@ public class TestarJPA {
 		for (Carro c : carros) {
 			System.out.println(c.getPlaca());
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		Dao<Usuario> usuarioDao = new GenericDao<Usuario>();
+		
+		argumentos = new HashMap<String,Object>();
+		argumentos.put("nome", "Cleverson");
+		
+		where = "where t.nome = :nome ";
+		
+		List<Usuario> usuarios = usuarioDao.listarWhere(Usuario.class, 
+				where, argumentos);
+		for (Usuario u : usuarios) {
+			System.out.println(u.getNome());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 
 	}
