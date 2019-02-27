@@ -1,6 +1,7 @@
 package br.edu.unifacear.projetointegrador3.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -40,5 +41,17 @@ public class UsuarioDao implements Dao<Usuario> {
 		em.remove(usuario);
 		em.getTransaction().commit();
 		em.close();	
+	}
+
+	@Override
+	public List<Usuario> listarTodos(Class<Usuario> c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Usuario> listarWhere(Class<Usuario> c, String where, Map<String, Object> argumentos) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

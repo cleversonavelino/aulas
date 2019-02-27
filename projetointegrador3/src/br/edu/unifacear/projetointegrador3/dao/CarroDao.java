@@ -1,6 +1,7 @@
 package br.edu.unifacear.projetointegrador3.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -23,16 +24,24 @@ public class CarroDao implements Dao<Carro> {
 		
 	}
 
-	@Override
-	public List<Carro> listar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void excluir(Carro carro) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Carro> listarTodos(Class<Carro> c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Carro> listarWhere(Class<Carro> c, String where, Map<String, Object> argumentos) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
