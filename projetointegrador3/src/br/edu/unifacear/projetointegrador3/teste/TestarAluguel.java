@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import br.edu.unifacear.projetointegrador3.business.AluguelBusiness;
+import br.edu.unifacear.projetointegrador3.business.BusinessException;
 import br.edu.unifacear.projetointegrador3.dao.Dao;
 import br.edu.unifacear.projetointegrador3.dao.GenericDao;
 import br.edu.unifacear.projetointegrador3.entidade.Aluguel;
@@ -55,8 +57,13 @@ public class TestarAluguel {
 		
 		aluguel.setDataDevolucao(calendar.getTime());
 		
-		Dao<Aluguel> daoAluguel = new GenericDao<Aluguel>();
-		daoAluguel.inserir(aluguel);
+		try {
+			new AluguelBusiness().inserir(aluguel);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		//Dao<Aluguel> daoAluguel = new GenericDao<Aluguel>();
+		//daoAluguel.inserir(aluguel);
 		
 	}
 
